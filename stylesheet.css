@@ -1,3 +1,4 @@
+
 p {
     border: 0.5px solid hsla(0, 100%, 0%, 30);
     box-shadow: 1px 1px 1px grey;
@@ -14,13 +15,19 @@ p:hover {
 
 #button, #button2 {
     width: 100px;
-    border: 5px solid blue;
+    height: 25px;
+    background-color: #F6F6F6;
+    color: #222222;
+    border-radius: 10px;
+    font-size: 15px;
 }
 
 #nameBox, #nameBox2 {
     width: 200px;
-    margin-bottom: 50px;
+    height: 50px;
+    margin-bottom: 10px;
     border: 1px solid black;
+    font-size: 30px;
 }
 
 .container {
@@ -31,10 +38,40 @@ p:hover {
 }
 
 .score {
-    font-size: 30px;
+    font-size: 50px;
     color: blue;
     font-weight: bold;
     text-align: center;
     border: none;
     box-shadow: none;
+}
+
+h1, h6 {
+    width: 700px;
+    margin: 20px;
+}
+
+div h6 {
+    width: 300px;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.hamburgermenu {
+    height: 50px;
+    width: 50px;
+}
+
+#search1, #search2 {
+    padding: 10px;
+    margin: 30px;
+    border: 1px solid hsla(0, 100%, 0%, .1);
+}
+
+.midcontainer {
+    border: 1px solid hsla(0, 100%, 0%, .1);
+    padding: 10px;
 }

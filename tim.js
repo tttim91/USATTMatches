@@ -22,8 +22,13 @@ $(document).ready(function() {
             printSimilarMatches(data);
         });
 
+        $('.hamburgermenu').click(function() {
+            
+        });
+
     });
 
+    //Populates the middle section of the website and shows the matches that the two players played against each other
     function printSimilarMatches(data) {
         var person1 = $('.subcontainer p:first-child').text();
         var person2 = $('.subcontainer2 p:first-child').text();
@@ -50,7 +55,7 @@ $(document).ready(function() {
         else if (number == 2) {
             var subcontainer = $('.subcontainer2');
         }
-        subcontainer.append("<p>" + selection + "</p>");
+        subcontainer.append("<p><strong>" + selection + "</strong></p>");
         for(var i=1; i<data.length; i++) {
             if(selection == getName(i, data)) {
                 subcontainer.append("<p>" + getGameStats(i, data) + "</p>");
@@ -169,10 +174,12 @@ $(document).ready(function() {
         return "<strong>Opponent: </strong>" + JSONdata[index]["Opponent First Name"] + " "+ JSONdata[index]["Opponent Last Name"] + " (" + JSONdata[index]["USATT #"] + ")<br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: (W)</strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
     }
 
+    //This function returns a string that shows the head to head data format.
     function getHeadToHead(index, JSONdata) {
         return "<strong>" + JSONdata[index]["FirstName"] + " " + JSONdata[index]["LastName"] + "</strong> vs " + JSONdata[index]["Opponent First Name"] + " "+ JSONdata[index]["Opponent Last Name"] + "<br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: </strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
     }
 
+    //This function returns a string that shows the head to head data format for the opponent.
     function getHeadToHeadOpponent(index, JSONdata) {
         return JSONdata[index]["Opponent First Name"] + " " + JSONdata[index]["Opponent Last Name"] + " vs <strong>" + JSONdata[index]["FirstName"] + " "+ JSONdata[index]["LastName"] + "</strong><br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: </strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
     }
