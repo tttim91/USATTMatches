@@ -1,3 +1,6 @@
+body {
+    background-color: #EDF0F5;
+}
 
 p {
     border: 0.5px solid hsla(0, 100%, 0%, 30);
@@ -5,6 +8,7 @@ p {
     padding: 10px;
     margin: 20px;
     max-width: 300px;
+    background-color: white;
 }
 
 p:hover {
@@ -20,6 +24,10 @@ p:hover {
     color: #222222;
     border-radius: 10px;
     font-size: 15px;
+}
+
+#button:hover, #button2:hover {
+    cursor: pointer;
 }
 
 #nameBox, #nameBox2 {
@@ -49,20 +57,24 @@ p:hover {
 h1, h6 {
     width: 700px;
     margin: 20px;
+    color: white;
 }
 
-div h6 {
+div h5 {
     width: 300px;
 }
 
 header {
     display: flex;
     justify-content: space-between;
+    background-color: #3B5998;
+    margin: -10px;
 }
 
 .hamburgermenu {
     height: 50px;
     width: 50px;
+    margin: 20px;
 }
 
 #search1, #search2 {

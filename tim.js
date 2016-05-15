@@ -12,18 +12,18 @@ $(document).ready(function() {
         $(document).on('click', '.name', function() {
             $('.subcontainer').empty();
             var selectedName = $(this).text();
-            printPlayerData(data, selectedName, 1);
+            printMatchData(data, selectedName, 1);
             printSimilarMatches(data);
         });
         $(document).on('click', '.name2', function() {
             $('.subcontainer2').empty();
             var selectedName = $(this).text();
-            printPlayerData(data, selectedName, 2);
+            printMatchData(data, selectedName, 2);
             printSimilarMatches(data);
         });
 
         $('.hamburgermenu').click(function() {
-            
+
         });
 
     });
@@ -48,7 +48,7 @@ $(document).ready(function() {
     }
 
     //This function prints out the player you select as well as all their matches below with details
-    function printPlayerData(data, selection, number) {
+    function printMatchData(data, selection, number) {
         if(number == 1) {
             var subcontainer = $('.subcontainer');
         }
