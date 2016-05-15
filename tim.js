@@ -13,14 +13,34 @@ $(document).ready(function() {
             $('.subcontainer').empty();
             var selectedName = $(this).text();
             printPlayerData(data, selectedName, 1);
+            printSimilarMatches(data);
         });
         $(document).on('click', '.name2', function() {
             $('.subcontainer2').empty();
             var selectedName = $(this).text();
             printPlayerData(data, selectedName, 2);
+            printSimilarMatches(data);
         });
 
     });
+
+    function printSimilarMatches(data) {
+        var person1 = $('.subcontainer p:first-child').text();
+        var person2 = $('.subcontainer2 p:first-child').text();
+        var person1Score = 0, person2Score = 0;
+        $('.midcontainer').empty();
+        for(var i = 1; i< data.length; i++) {
+            if(person1 == getName(i, data) && person2 == getNameOpponent(i, data)) {
+                $('.midcontainer').append("<p>" + getHeadToHead(i,data) + "</p>");
+                person1Score++;
+            }
+            else if (person1 == getNameOpponent(i, data) && person2 == getName(i, data)) {
+                $('.midcontainer').append("<p>" + getHeadToHeadOpponent(i,data) + "</p>");
+                person2Score++;
+            }
+        }
+        $('.midcontainer').prepend("<p class='score'>" + person1Score + " - " + person2Score + "</p>");
+    }
 
     //This function prints out the player you select as well as all their matches below with details
     function printPlayerData(data, selection, number) {
@@ -46,18 +66,18 @@ $(document).ready(function() {
         var currentArray = [];
         var counter = 0;
         if(number == 1) {
-            var nameBox = $('#nameBox').val();
+            var nameBox = $('#nameBox').val().toLowerCase();
             var subcontainer = $('.subcontainer');
             var name = "name";
         }
         else if (number == 2) {
-            var nameBox = $('#nameBox2').val();
+            var nameBox = $('#nameBox2').val().toLowerCase();
             var subcontainer = $('.subcontainer2');
             var name = "name2";
         }
         subcontainer.empty();
         for(var i=1; i<data.length; i++) {
-            if(nameBox == data[i]["FirstName"]) {
+            if(nameBox == data[i]["FirstName"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
                     subcontainer.append("<p class="+name+">" + getName(i,data) + "</p>");
@@ -75,7 +95,7 @@ $(document).ready(function() {
                 }
             }
 
-            else if(nameBox == data[i]["Opponent First Name"]) {
+            else if(nameBox == data[i]["Opponent First Name"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
                     subcontainer.append("<p class="+name+">" + getNameOpponent(i,data) + "</p>");
@@ -92,7 +112,7 @@ $(document).ready(function() {
                     subcontainer.append("<p class="+name+">" + getNameOpponent(i,data) + "</p>");
                 }
             }
-            else if(nameBox == data[i]["LastName"]) {
+            else if(nameBox == data[i]["LastName"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
                     currentArray.push(getName(i, data));
@@ -109,7 +129,7 @@ $(document).ready(function() {
                     subcontainer.append("<p class="+name+">" + getName(i,data) + "</p>");
                 }
             }
-            else if (nameBox == data[i]["Opponent Last Name"]) {
+            else if (nameBox == data[i]["Opponent Last Name"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
                     currentArray.push(getNameOpponent(i, data));
@@ -147,5 +167,13 @@ $(document).ready(function() {
     //This function returns a string with the First Players Match Statistics for a certain match.
     function getGameStats(index, JSONdata) {
         return "<strong>Opponent: </strong>" + JSONdata[index]["Opponent First Name"] + " "+ JSONdata[index]["Opponent Last Name"] + " (" + JSONdata[index]["USATT #"] + ")<br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: (W)</strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
+    }
+
+    function getHeadToHead(index, JSONdata) {
+        return "<strong>" + JSONdata[index]["FirstName"] + " " + JSONdata[index]["LastName"] + "</strong> vs " + JSONdata[index]["Opponent First Name"] + " "+ JSONdata[index]["Opponent Last Name"] + "<br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: </strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
+    }
+
+    function getHeadToHeadOpponent(index, JSONdata) {
+        return JSONdata[index]["Opponent First Name"] + " " + JSONdata[index]["Opponent Last Name"] + " vs <strong>" + JSONdata[index]["FirstName"] + " "+ JSONdata[index]["LastName"] + "</strong><br/><strong>Date:</strong> " + JSONdata[index]["Date"] + "<br/><strong>Game Scores: </strong> " + JSONdata[index]["Match Score"] + "<br/><strong>Tournament: </strong>" + JSONdata[index]["Tournament Name"] + " (" + JSONdata[index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[index]["Event"];
     }
 })

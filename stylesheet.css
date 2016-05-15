@@ -3,6 +3,7 @@ p {
     box-shadow: 1px 1px 1px grey;
     padding: 10px;
     margin: 20px;
+    max-width: 300px;
 }
 
 p:hover {
@@ -29,6 +30,11 @@ p:hover {
     justify-content: space-between;
 }
 
-.subcontainer {
-
+.score {
+    font-size: 30px;
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    box-shadow: none;
 }
