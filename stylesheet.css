@@ -1,0 +1,34 @@
+p {
+    border: 0.5px solid hsla(0, 100%, 0%, 30);
+    box-shadow: 1px 1px 1px grey;
+    padding: 10px;
+    margin: 20px;
+}
+
+p:hover {
+    color: blue;
+    box-shadow: 10px 5px 5px black:
+    border: 3px solid black;
+}
+
+#button, #button2 {
+    width: 100px;
+    border: 5px solid blue;
+}
+
+#nameBox, #nameBox2 {
+    width: 200px;
+    margin-bottom: 50px;
+    border: 1px solid black;
+}
+
+.container {
+    display: flex;
+    height: 100%;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.subcontainer {
+
+}
