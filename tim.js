@@ -21,13 +21,13 @@ $(document).ready(function() {
         $(document).on('click', '.name', function() {
             $('.subcontainer').empty();
             var selectedName = $(this).text();
-            printMatchData(data, selectedName, 1, 0, 4);
+            printMatchData(data, selectedName, 1, 0, 4, "both");
             printSimilarMatches(data);
         });
         $(document).on('click', '.name2', function() {
             $('.subcontainer2').empty();
             var selectedName = $(this).text();
-            printMatchData(data, selectedName, 2, 0, 4);
+            printMatchData(data, selectedName, 2, 0, 4, "both");
             printSimilarMatches(data);
         });
 
@@ -39,62 +39,192 @@ $(document).ready(function() {
         });
 
         $(document).on('change', '#yearSelection1', function() {
-            $('option:selected').attr("selected", true);
-            var selectedName = $('.subcontainer p:nth-child(4)').text();
-            console.log(selectedName);
-            var selectedOption = $('option:selected').val();
+            $('#typeFilter option:selected').attr("selected", true);
+            $('#yearSelection1 option:selected').attr("selected", true);
+            var selectedName = $('.subcontainer p:nth-child(5)').text();
+            var selectedOption = $('#yearSelection1 option:selected').val();
+            var selectedType = $('#typeFilter option:selected').val();
+            if(selectedType == "both") {
+                var type = "both";
+                var option = "#typeFilter option:nth-child(1)";
+            }
+            else if(selectedType == "wins") {
+                var type = "win";
+                var option = "#typeFilter option:nth-child(2)";
+            }
+            if(selectedType == "losses") {
+                var type = "loss";
+                var option = "#typeFilter option:nth-child(3)";
+            }
             $('.subcontainer').empty();
             if(selectedOption == "All") {
-                printMatchData(data, selectedName, 1, 0, 4);
+                printMatchData(data, selectedName, 1, 0, 4, type);
                 $('#All').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2015) {
-                printMatchData(data, selectedName, 1, 0, 1);
+                printMatchData(data, selectedName, 1, 0, 1, type);
                 $('#2015').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2014) {
-                printMatchData(data, selectedName, 1, 1, 2);
+                printMatchData(data, selectedName, 1, 1, 2, type);
                 $('#2014').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2013) {
-                printMatchData(data, selectedName, 1, 2, 3);
+                printMatchData(data, selectedName, 1, 2, 3, type);
                 $('#2013').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2012) {
-                printMatchData(data, selectedName, 1, 3, 4);
+                printMatchData(data, selectedName, 1, 3, 4, type);
                 $('#2012').attr("selected", true);
+                $(option).attr("selected", true);
             }
         });
         $(document).on('change', '#yearSelection2', function() {
-            $('option:selected').attr("selected", true);
-            var selectedName = $('.subcontainer2 p:nth-child(4)').text();
-            console.log(selectedName);
-            var selectedOption = $('option:selected').val();
+            $('#typeFilter2 option:selected').attr("selected", true);
+            $('#yearSelection2 option:selected').attr("selected", true);
+            var selectedName = $('.subcontainer2 p:nth-child(5)').text();
+            var selectedOption = $('#yearSelection2 option:selected').val();
+            var selectedType = $('#typeFilter2 option:selected').val();
+            if(selectedType == "bothtwo") {
+                var type = "both";
+                var option = "#typeFilter2 option:nth-child(1)";
+            }
+            else if(selectedType == "winstwo") {
+                var type = "win";
+                var option = "#typeFilter2 option:nth-child(2)";
+            }
+            if(selectedType == "lossestwo") {
+                var type = "loss";
+                var option = "#typeFilter2 option:nth-child(3)";
+            }
             $('.subcontainer2').empty();
-            if(selectedOption == "All") {
-                printMatchData(data, selectedName, 2, 0, 4);
+            if(selectedOption == "Alltwo") {
+                printMatchData(data, selectedName, 2, 0, 4, type);
                 $('#Alltwo').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2015) {
-                printMatchData(data, selectedName, 2, 0, 1);
+                printMatchData(data, selectedName, 2, 0, 1, type);
                 $('#2015two').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2014) {
-                printMatchData(data, selectedName, 2, 1, 2);
+                printMatchData(data, selectedName, 2, 1, 2, type);
                 $('#2014two').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2013) {
-                printMatchData(data, selectedName, 2, 2, 3);
+                printMatchData(data, selectedName, 2, 2, 3, type);
                 $('#2013two').attr("selected", true);
+                $(option).attr("selected", true);
             }
             else if(selectedOption == 2012) {
-                printMatchData(data, selectedName, 2, 3, 4);
+                printMatchData(data, selectedName, 2, 3, 4, type);
                 $('#2012two').attr("selected", true);
+                $(option).attr("selected", true);
             }
         });
 
-        $(document).on('click', '#back1', function() {
+        $(document).on('change', '#typeFilter', function() {
+            $('#typeFilter option:selected').attr("selected", true);
+            $('#yearSelection1 option:selected').attr("selected", true);
+            var selectedName = $('.subcontainer p:nth-child(5)').text();
+            var selectedOption = $('#typeFilter option:selected').val();
+            var selectedYear = $('#yearSelection1 option:selected').val();
+            if(selectedYear == "All") {
+                var first = 0;
+                var second = 4;
+                var option = '#yearSelection1 option:nth-child(1)';
+            }
+            else if(selectedYear == 2015) {
+                var first = 0;
+                var second = 1;
+                var option = '#yearSelection1 option:nth-child(2)';
+            }
+            else if(selectedYear == 2014) {
+                var first = 1;
+                var second = 2;
+                var option = '#yearSelection1 option:nth-child(3)';
+            }
+            else if(selectedYear == 2013) {
+                var first = 2;
+                var second = 3;
+                var option = '#yearSelection1 option:nth-child(4)';
+            }
+            else if(selectedYear == 2012) {
+                var first = 3;
+                var second = 4;
+                var option = '#yearSelection1 option:nth-child(5)';
+            }
+            $('.subcontainer').empty();
+            if(selectedOption == "both") {
+                printMatchData(data, selectedName, 1, first, second, "both");
+                $('#both').attr("selected", true);
+                $(option).attr("selected", true);
+            }
+            else if(selectedOption == "wins") {
+                printMatchData(data, selectedName, 1, first, second, "win");
+                $('#wins').attr("selected", true);
+                $(option).attr("selected", true);
+            }
+            else if(selectedOption == "losses") {
+                printMatchData(data, selectedName, 1, first, second, "loss");
+                $('#losses').attr("selected", true);
+                $(option).attr("selected", true);
+            }
+        });
 
+        $(document).on('change', '#typeFilter2', function() {
+            $('#typeFilter2 option:selected').attr("selected", true);
+            $('#yearSelection2 option:selected').attr("selected", true);
+            var selectedName = $('.subcontainer2 p:nth-child(5)').text();
+            var selectedOption = $('#typeFilter2 option:selected').val();
+            var selectedYear = $('#yearSelection2 option:selected').val();
+            if(selectedYear == "All") {
+                var first = 0;
+                var second = 4;
+                var option = '#yearSelection2 option:nth-child(1)';
+            }
+            else if(selectedYear == 2015) {
+                var first = 0;
+                var second = 1;
+                var option = '#yearSelection2 option:nth-child(2)';
+            }
+            else if(selectedYear == 2014) {
+                var first = 1;
+                var second = 2;
+                var option = '#yearSelection2 option:nth-child(3)';
+            }
+            else if(selectedYear == 2013) {
+                var first = 2;
+                var second = 3;
+                var option = '#yearSelection2 option:nth-child(4)';
+            }
+            else if(selectedYear == 2012) {
+                var first = 3;
+                var second = 4;
+                var option = '#yearSelection2 option:nth-child(5)';
+            }
+            $('.subcontainer2').empty();
+            if(selectedOption == "bothtwo") {
+                printMatchData(data, selectedName, 2, first, second, "both");
+                $('#bothtwo').attr("selected", true);
+                $(option).attr("selected", true);
+            }
+            else if(selectedOption == "winstwo") {
+                printMatchData(data, selectedName, 2, first, second, "win");
+                $('#winstwo').attr("selected", true);
+                $(option).attr("selected", true);
+            }
+            else if(selectedOption == "lossestwo") {
+                printMatchData(data, selectedName, 2, first, second, "loss");
+                $('#lossestwo').attr("selected", true);
+                $(option).attr("selected", true);
+            }
         });
 
         $('.hamburgermenu').click(function() {
@@ -115,8 +245,8 @@ $(document).ready(function() {
 
     //Populates the middle section of the website and shows the matches that the two players played against each other
     function printSimilarMatches(data) {
-        var person1 = $('.subcontainer p:nth-child(4)').text();
-        var person2 = $('.subcontainer2 p:nth-child(4)').text();
+        var person1 = $('.subcontainer p:nth-child(5)').text();
+        var person2 = $('.subcontainer2 p:nth-child(5)').text();
         var person1Score = 0, person2Score = 0;
         $('.midcontainer').empty();
         for(var year=0; year<4; year++){
@@ -136,7 +266,7 @@ $(document).ready(function() {
     }
 
     //This function prints out the player you select as well as all their matches below with details
-    function printMatchData(data, selection, number, yearBeg, yearEnd) {
+    function printMatchData(data, selection, number, yearBeg, yearEnd, type) {
         var wins=0, losses=0;
         if(number == 1) {
             var subcontainer = $('.subcontainer');
@@ -147,11 +277,11 @@ $(document).ready(function() {
         subcontainer.append("<p><strong>" + selection + "</strong></p>");
         for(var year=yearBeg; year<yearEnd; year++){
             for(var i=1; i<data[year].length; i++) {
-                if(selection == getName(year, i, data)) {
+                if(selection == getName(year, i, data) && (type=="both" || type=="win")) {
                     subcontainer.append("<p>" + getGameStats(year, i, data) + "</p>");
                     wins++;
                 }
-                else if(selection == getNameOpponent(year, i, data)) {
+                else if(selection == getNameOpponent(year, i, data) && (type=="both" || type=="loss")) {
                     subcontainer.append("<p>" + getGameStatsOpponent(year, i, data) + "</p>");
                     losses++;
                 }
@@ -159,10 +289,12 @@ $(document).ready(function() {
         }
         if(number == 1) {
             subcontainer.prepend("<input type='button' value='Clear Player' id='clear1'>");
+            subcontainer.prepend("<select id='typeFilter'><option value='both' id='both'>Both wins/losses</option><option value='wins' id='wins'>wins</option><option value='losses' id='losses'>losses</option></select>");
             subcontainer.prepend("<select id='yearSelection1'><option value='All' id='All'>All years</option><option value='2015' id='2015'>2015</option><option value='2014' id='2014'>2014</option><option value='2013' id='2013'>2013</option><option value='2012' id='2012'>2012</option></select>");
         }
         else if (number == 2) {
             subcontainer.prepend("<input type='button' value='Clear Player' id='clear2'>");
+            subcontainer.prepend("<select id='typeFilter2'><option value='bothtwo' id='bothtwo'>Both wins/losses</option><option value='winstwo' id='winstwo'>wins</option><option value='lossestwo' id='lossestwo'>Losses</option></select>");
             subcontainer.prepend("<select id='yearSelection2'><option value='All' id='Alltwo'>All years</option><option value='2015' id='2015two'>2015</option><option value='2014' id='2014two'>2014</option><option value='2013' id='2013two'>2013</option><option value='2012' id='2012two'>2012</option></select>");
         }
 
