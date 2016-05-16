@@ -1,0 +1,9 @@
+{
+  "firebase": "USATTMatchHeadtoHead",
+  "public": ".",
+  "ignore": [
+    "firebase.json",
+    "**/.*",
+    "**/node_modules/**"
+  ]
+}

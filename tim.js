@@ -45,6 +45,7 @@ $(document).ready(function() {
             }
         }
         $('.midcontainer').prepend("<p class='score'>" + person1Score + " - " + person2Score + "</p>");
+        $('.midcontainer').prepend("<h4>Match Score</h4>");
     }
 
     //This function prints out the player you select as well as all their matches below with details
@@ -56,6 +57,7 @@ $(document).ready(function() {
             var subcontainer = $('.subcontainer2');
         }
         subcontainer.append("<p><strong>" + selection + "</strong></p>");
+        subcontainer.append("<h4>Match History</h4>");
         for(var i=1; i<data.length; i++) {
             if(selection == getName(i, data)) {
                 subcontainer.append("<p>" + getGameStats(i, data) + "</p>");
@@ -85,6 +87,7 @@ $(document).ready(function() {
             if(nameBox == data[i]["FirstName"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
+                    subcontainer.append("<h4>Select a person</h4>");
                     subcontainer.append("<p class="+name+">" + getName(i,data) + "</p>");
                     currentArray.push(getName(i, data));
                 }
@@ -103,6 +106,7 @@ $(document).ready(function() {
             else if(nameBox == data[i]["Opponent First Name"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
+                    subcontainer.append("<h4>Select a person</h4>");
                     subcontainer.append("<p class="+name+">" + getNameOpponent(i,data) + "</p>");
                     currentArray.push(getNameOpponent(i, data));
                 }
@@ -120,6 +124,7 @@ $(document).ready(function() {
             else if(nameBox == data[i]["LastName"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
+                    subcontainer.append("<h4>Select a person</h4>");
                     currentArray.push(getName(i, data));
                     subcontainer.append("<p class="+name+">" + getName(i,data) + "</p>");
                 }
@@ -137,6 +142,7 @@ $(document).ready(function() {
             else if (nameBox == data[i]["Opponent Last Name"].toLowerCase()) {
                 counter++;
                 if(counter==1) {
+                    subcontainer.append("<h4>Select a person</h4>");
                     currentArray.push(getNameOpponent(i, data));
                     subcontainer.append("<p class="+name+">" + getNameOpponent(i,data) + "</p>");
                 }
