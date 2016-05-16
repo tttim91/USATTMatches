@@ -104,7 +104,7 @@ h4 {
     font-size: 20px;
 }
 
-#clear1, #clear2 {
+#clear1, #clear2, #yearSelection1, #yearSelection2 {
     position: relative;
-    left: 20px;
+    margin-left: 20px;
 }

@@ -93,6 +93,10 @@ $(document).ready(function() {
             }
         });
 
+        $(document).on('click', '#back1', function() {
+
+        });
+
         $('.hamburgermenu').click(function() {
 
         });
@@ -154,11 +158,11 @@ $(document).ready(function() {
             }
         }
         if(number == 1) {
-            subcontainer.prepend("<input type='button' value='Clear' id='clear1'>");
+            subcontainer.prepend("<input type='button' value='Clear Player' id='clear1'>");
             subcontainer.prepend("<select id='yearSelection1'><option value='All' id='All'>All years</option><option value='2015' id='2015'>2015</option><option value='2014' id='2014'>2014</option><option value='2013' id='2013'>2013</option><option value='2012' id='2012'>2012</option></select>");
         }
         else if (number == 2) {
-            subcontainer.prepend("<input type='button' value='Clear' id='clear2'>");
+            subcontainer.prepend("<input type='button' value='Clear Player' id='clear2'>");
             subcontainer.prepend("<select id='yearSelection2'><option value='All' id='Alltwo'>All years</option><option value='2015' id='2015two'>2015</option><option value='2014' id='2014two'>2014</option><option value='2013' id='2013two'>2013</option><option value='2012' id='2012two'>2012</option></select>");
         }
 
