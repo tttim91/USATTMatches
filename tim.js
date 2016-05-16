@@ -105,28 +105,24 @@ $(document).ready(function() {
             if(selectedOption == "Alltwo") {
                 printMatchData(data, selectedName, 2, 0, 4, type);
                 $('#Alltwo').attr("selected", true);
-                $(option).attr("selected", true);
             }
             else if(selectedOption == 2015) {
                 printMatchData(data, selectedName, 2, 0, 1, type);
                 $('#2015two').attr("selected", true);
-                $(option).attr("selected", true);
             }
             else if(selectedOption == 2014) {
                 printMatchData(data, selectedName, 2, 1, 2, type);
                 $('#2014two').attr("selected", true);
-                $(option).attr("selected", true);
             }
             else if(selectedOption == 2013) {
                 printMatchData(data, selectedName, 2, 2, 3, type);
                 $('#2013two').attr("selected", true);
-                $(option).attr("selected", true);
             }
             else if(selectedOption == 2012) {
                 printMatchData(data, selectedName, 2, 3, 4, type);
                 $('#2012two').attr("selected", true);
-                $(option).attr("selected", true);
             }
+            $(option).attr("selected", true);
         });
 
         $(document).on('change', '#typeFilter', function() {
@@ -322,113 +318,48 @@ $(document).ready(function() {
         subcontainer.empty();
         for(var year=0; year<4; year++){
             for(var i=1; i<data[year].length; i++) {
+                var playerName = null;
                 if(nameBox == data[year][i]["FirstName"].substr(0,length).toLowerCase()) {
                     counter++;
-                    if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                        currentArray.push(getName(year, i, data));
-                    }
-                    var truth = false;
-                    for(var j =0; j<currentArray.length; j++) {
-                        if(getName(year, i, data) == currentArray[j]){
-                            truth = true;
-                        }
-                    }
-                    if(truth == false) {
-                        currentArray.push(getName(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                    }
+                    playerName = getName(year, i, data);
                 }
 
                 else if(nameBox == data[year][i]["Opponent First Name"].substr(0,length).toLowerCase()) {
                     counter++;
-                    if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
-                        currentArray.push(getNameOpponent(year, i, data));
-                    }
-                    var truth = false;
-                    for(var j =0; j<currentArray.length; j++) {
-                        if(getNameOpponent(year, i, data) == currentArray[j]){
-                            truth = true;
-                        }
-                    }
-                    if(truth == false) {
-                        currentArray.push(getNameOpponent(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
-                    }
+                    playerName = getNameOpponent(year, i, data);
                 }
                 else if(nameBox == data[year][i]["LastName"].substr(0,length).toLowerCase()) {
                     counter++;
-                    if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
-                        currentArray.push(getName(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                    }
-                    var truth = false;
-                    for(var j =0; j<currentArray.length; j++) {
-                        if(getName(year, i, data) == currentArray[j]){
-                            truth = true;
-                        }
-                    }
-                    if(truth == false) {
-                        currentArray.push(getName(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                    }
+                    playerName = getName(year, i, data);
                 }
                 else if (nameBox == data[year][i]["Opponent Last Name"].substr(0,length).toLowerCase()) {
                     counter++;
-                    if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
-                        currentArray.push(getNameOpponent(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
-                    }
-                    var truth = false;
-                    for(var j =0; j<currentArray.length; j++) {
-                        if(getNameOpponent(year, i, data) == currentArray[j]){
-                            truth = true;
-                        }
-                    }
-                    if(truth == false) {
-                        currentArray.push(getNameOpponent(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
-                    }
+                    playerName = getNameOpponent(year, i, data);
                 }
                 else if (nameBox == (data[year][i]["FirstName"].toLowerCase() + " " + data[year][i]["LastName"].toLowerCase())) {
                     counter++;
-                    if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
-                        currentArray.push(getName(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                    }
-                    var truth = false;
-                    for(var j =0; j<currentArray.length; j++) {
-                        if(getName(year, i, data) == currentArray[j]){
-                            truth = true;
-                        }
-                    }
-                    if(truth == false) {
-                        currentArray.push(getName(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getName(year, i,data) + "</p>");
-                    }
+                    playerName = getName(year, i, data);
                 }
                 else if (nameBox == (data[year][i]["Opponent First Name"].toLowerCase() + " " + data[year][i]["Opponent Last Name"].toLowerCase())) {
                     counter++;
+                    playerName = getNameOpponent(year, i, data);
+                }
+
+                if(playerName) {
                     if(counter==1) {
                         subcontainer.append("<h4>Select a person</h4>");
-                        currentArray.push(getNameOpponent(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
+                        subcontainer.append("<p class="+name+">" + playerName + "</p>");
+                        currentArray.push(playerName);
                     }
                     var truth = false;
                     for(var j =0; j<currentArray.length; j++) {
-                        if(getNameOpponent(year, i, data) == currentArray[j]){
+                        if(playerName == currentArray[j]){
                             truth = true;
                         }
                     }
                     if(truth == false) {
-                        currentArray.push(getNameOpponent(year, i, data));
-                        subcontainer.append("<p class="+name+">" + getNameOpponent(year, i,data) + "</p>");
+                        currentArray.push(playerName);
+                        subcontainer.append("<p class="+name+">" + playerName + "</p>");
                     }
                 }
             }
