@@ -17,7 +17,7 @@ p:hover {
   border: 1px solid hsla(0, 100%, 0%, 1);
 }
 
-#button, #button2 {
+.button {
     width: 100px;
     height: 25px;
     background-color: #F6F6F6;
@@ -30,7 +30,7 @@ p:hover {
     cursor: pointer;
 }
 
-#nameBox, #nameBox2 {
+.nameBox {
     width: 200px;
     height: 50px;
     margin-bottom: 10px;
@@ -77,7 +77,7 @@ header {
     margin: 20px;
 }
 
-#search1, #search2 {
+.search {
     padding: 10px;
     margin: 30px;
     border: 1px solid hsla(0, 100%, 0%, .05);
@@ -104,7 +104,7 @@ h4 {
     font-size: 20px;
 }
 
-#clear1, #clear2, #yearSelection1, #yearSelection2, #typeFilter, #typeFilter2{
+.clear, .yearSelection, .typeFilter{
     position: relative;
     margin-left: 20px;
 }
