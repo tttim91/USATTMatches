@@ -41,11 +41,54 @@ $(document).ready(function() {
         });
 
         //Click on hamburgermenu to open menu
-        $('.hamburgermenu').click(function() {
 
+        $(".container-fluid").click(function() {
+            $('.menu').fadeOut(300);
         });
 
+        $('.hamburgermenu').click(function() {
+            $('.menu').toggle(300);
+        });
     });
+
+    function printMostPlayedOpponent(data) {
+        var subcontainer = $(this);
+        var answer;
+        var currentOpponents = [];
+        var totalP = subcontainer.find('p');
+        for(var i=1; i<totalP.length-1; i++) {
+            currentOpponents.push(totalP[i].innerText.substring(10,totalP[i].innerText.indexOf(")")+1));
+        }
+        if (currentOpponents.length == 0)
+            return null;
+
+        var modeMap = {},
+            maxEl = currentOpponents[0],
+            maxCount = 1;
+
+        for(var i = 0; i < currentOpponents.length; i++)
+        {
+            var el = currentOpponents[i];
+
+            if (modeMap[el] == null)
+                modeMap[el] = 1;
+            else
+                modeMap[el]++;
+
+            if (modeMap[el] > maxCount)
+            {
+                maxEl = el;
+                maxCount = modeMap[el];
+            }
+            else if (modeMap[el] == maxCount)
+            {
+                maxEl += ', ' + el;
+                maxCount = modeMap[el];
+            }
+        }
+        subcontainer.find('p:nth-child(5)').after("<p><strong>Most Played Opponent(s):</strong></br>"+maxEl+"<br/><strong>Games:</strong> "+maxCount+"</p>");
+        subcontainer.find('p:nth-child(6)').after("<h4>Match History</h4>")
+    }
 
     //This function will allow the win/loss toggle to filter the match data for each player
     function selectType(data) {
@@ -165,7 +208,7 @@ $(document).ready(function() {
             }
         }
         $('.midcontainer').prepend("<p class='score'>" + person1Score + " - " + person2Score + "</p>");
-        $('.midcontainer').prepend("<h4>Match Score</h4>");
+        $('.midcontainer').prepend("<h4>Head-to-Head Match Score</h4>");
     }
 
     //This function prints out the player you select as well as all their matches below with details
@@ -190,6 +233,8 @@ $(document).ready(function() {
         subcontainer.prepend("<select class='yearSelection'><option value='All' class='All'>All years</option><option value='2015' class='2015'>2015</option><option value='2014' class='2014'>2014</option><option value='2013' class='2013'>2013</option><option value='2012' class='2012'>2012</option></select>");
 
         subcontainer.prepend("<h4>Match History: (" + wins + "-" + losses + ")</h4>");
+
+        printMostPlayedOpponent.bind(subcontainer)(data);
 
     }
 

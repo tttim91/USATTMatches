@@ -3,10 +3,17 @@
     <head>
         <meta charset="utf-8">
         <title>asdf</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body>
-            <img src="backgroundTable.jpg" id="background"/>
+        <img src="backgroundTable.jpg" id="background"/>
+        <div class="menu">
+            <ul class="menuItems">
+                <li>Player Finder</li>
+                <li>Contact</li>
+            </ul>
+        </div>
         <header>
             <div>
                 <h1>USATT HEAD-to-HEAD MATCH HISTORY </h1>
@@ -15,26 +22,29 @@
             <img src="hamburgermenu" class="hamburgermenu"/>
         </header>
         <hr>
-        <div class="container">
-            <div class="search">
-                <input type="text" placeholder="Player 1" class="nameBox">
-                <input type="button" value="Submit" class="button">
-                <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
-                <div class="subcontainer" id="subcontainer1">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="search col-md-3">
+                    <input type="text" placeholder="Player 1" class="nameBox">
+                    <input type="button" value="Submit" class="button">
+                    <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
+                    <div class="subcontainer" id="subcontainer1">
+                    </div>
                 </div>
-            </div>
-            <div class="midcontainer">
-            </div>
-            <div class="search">
-                <input type="text" placeholder="Player 2" class="nameBox">
-                <input type="button" value="Submit" class="button">
-                <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
-                <div class="subcontainer" id="subcontainer2">
+                <div class="midcontainer col-md-5">
+                </div>
+                <div class="search col-md-3">
+                    <input type="text" placeholder="Player 2" class="nameBox">
+                    <input type="button" value="Submit" class="button">
+                    <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
+                    <div class="subcontainer" id="subcontainer2">
+                    </div>
                 </div>
             </div>
         </div>
 
         <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="tim.js"></script>
     </body>
 </html>
