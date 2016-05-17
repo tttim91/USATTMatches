@@ -12,7 +12,7 @@ $(document).ready(function() {
     //Returns all JSON data from 2012-2015 in ARRAY with each year as an index from 0-3.
     Promise.all([year2015, year2014, year2013, year2012]).then(function(data){
         //Click on submit button and names will populate below
-        $('.button').click(function () {
+        $('.nameBox').on("input", function () {
             printNames.bind(this)(data);
         });
 
@@ -232,7 +232,7 @@ $(document).ready(function() {
         subcontainer.prepend("<select class='typeFilter'><option value='both' class='both'>Both wins/losses</option><option value='wins' class='wins'>wins</option><option value='losses' class='losses'>losses</option></select>");
         subcontainer.prepend("<select class='yearSelection'><option value='All' class='All'>All years</option><option value='2015' class='2015'>2015</option><option value='2014' class='2014'>2014</option><option value='2013' class='2013'>2013</option><option value='2012' class='2012'>2012</option></select>");
 
-        subcontainer.prepend("<h4>Match History: (" + wins + "-" + losses + ")</h4>");
+        subcontainer.prepend("<h4>Record: (" + wins + "-" + losses + ")</h4>");
 
         printMostPlayedOpponent.bind(subcontainer)(data);
 

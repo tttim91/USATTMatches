@@ -2,13 +2,15 @@
 <html>
     <head>
         <meta charset="utf-8">
-        <title>asdf</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>USATT HeadtoHead</title>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body>
         <img src="backgroundTable.jpg" id="background"/>
         <div class="menu">
+            <h3> Menu </h3>
             <ul class="menuItems">
                 <li>Player Finder</li>
                 <li>Contact</li>
@@ -16,7 +18,7 @@
         </div>
         <header>
             <div>
-                <h1>USATT HEAD-to-HEAD MATCH HISTORY </h1>
+                <h1 class="brand">USATT H2H </h1>
                 <h6> From 1/7/12 -- 9/26/15 (Almost all tournaments, but some not included) </h6>
             </div>
             <img src="hamburgermenu" class="hamburgermenu"/>
@@ -24,19 +26,17 @@
         <hr>
         <div class="container-fluid">
             <div class="row">
-                <div class="search col-md-3">
-                    <input type="text" placeholder="Player 1" class="nameBox">
+                <div class="search col-xs-3">
+                    <input type="text" placeholder="Player 1 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
-                    <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
                     <div class="subcontainer" id="subcontainer1">
                     </div>
                 </div>
-                <div class="midcontainer col-md-5">
+                <div class="midcontainer col-xs-5">
                 </div>
-                <div class="search col-md-3">
-                    <input type="text" placeholder="Player 2" class="nameBox">
+                <div class="search col-xs-3">
+                    <input type="text" placeholder="Player 2 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
-                    <h5>Insert name of player to get USATT match history! Name must be either EXACT first AND last name OR any letters starting from beginning of first OR last name (not both) - capitalization doesn't matter!</h5>
                     <div class="subcontainer" id="subcontainer2">
                     </div>
                 </div>
