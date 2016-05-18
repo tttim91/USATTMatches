@@ -58,7 +58,8 @@ p {
   border: 1px solid black;
   font-size: 1rem; }
   .nameBox:focus {
-    box-shadow: inset 0 0 5px 5px #888; }
+    box-shadow: inset 0 0 2px 2px rgba(10, 112, 255, 0.85);
+    border: 2px solid blue; }
 
 .score {
   font-size: 4rem;
@@ -104,6 +105,9 @@ h1 {
   margin-left: 3%;
   border: 1px solid rgba(0, 0, 0, 0.05); }
 
+.subcontainer {
+  text-align: center; }
+
 .midcontainer {
   border: 1px solid rgba(0, 0, 0, 0.05);
   padding: 1%;
@@ -113,7 +117,7 @@ h1 {
     text-align: left; }
     .midcontainer p:nth-child(2) {
       text-align: center;
-      padding: 0.25em;
+      padding: 0.05em;
       background-color: #EDF0F5; }
 
 .clear, .yearSelection, .typeFilter {
@@ -176,3 +180,18 @@ a {
   color: white;
   height: 50%;
   width: 82%; }
+
+.table {
+  border: 2px solid black;
+  margin-top: 20px;
+  background-color: white; }
+  .table tr:first-child td:first-child {
+    background-color: darkgrey; }
+  .table tr:hover {
+    background-color: darkgrey; }
+  .table td, .table th {
+    border: 1px solid black;
+    text-align: center; }
+
+.returnTable {
+  margin-left: 10px; }

@@ -1,3 +1,4 @@
+//When all DOM elements finish loading - THEN run Javascript code
 $(document).ready(function() {
     //Get JSON Files from Heroku API Server (2012-2015) and store promise resolution
     var year2015 = $.get("https://tim-pingpong-stats.herokuapp.com/2015", function(data) {
@@ -22,12 +23,27 @@ $(document).ready(function() {
             }
         });
 
+        $(document).on('click', '.seeMatches', function() {
+            var subcontainer = $(this).parents('.subcontainer');
+            var selectedName = subcontainer.find('p:first-child').text();
+            printMatchData.bind(subcontainer)(data, selectedName, 0, 4, "both");
+            printSimilarMatches.bind(subcontainer)(data);
+        });
+
+        $(document).on('click', '.returnTable', function() {
+            var subcontainer = $(this).parents('.subcontainer');
+            var selectedName = subcontainer.find('p:first-child').text();
+            subcontainer.empty();
+            printTable.bind(subcontainer)(data, selectedName);
+            printSimilarMatches.bind(subcontainer)(data);
+        });
+
         //Click on any populated name and it will print their match history and also the head to head with other player
         $(document).on('click', '.name', function() {
             var subcontainer = $(this).parents('.subcontainer');
             subcontainer.empty();
             var selectedName = $(this).text();
-            printMatchData.bind(subcontainer)(data, selectedName, 0, 4, "both");
+            printTable.bind(subcontainer)(data, selectedName);
             printSimilarMatches.bind(subcontainer)(data);
         });
 
@@ -65,11 +81,58 @@ $(document).ready(function() {
 
     });
 
+    function getStat(data, selection, yearBeg, yearEnd, type) {
+        var wins=0, losses=0;
+        var subcontainer = $(this);
+        // subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");
+        for(var year=yearBeg; year<yearEnd; year++){
+            for(var i=1; i<data[year].length; i++) {
+                if((selection == getName(year, i, data)) && (type=="both" || type=="win" || type=="ratio")) {
+                    wins++;
+                }
+                else if((selection == getNameOpponent(year, i, data)) && (type=="both" || type=="loss" || type=="ratio")) {
+                    losses++;
+                }
+            }
+        }
+        if(type=="both") {
+            return wins+losses;
+        }
+        else if(type=="win") {
+            return wins;
+        }
+        else if(type=="loss") {
+            return losses;
+        }
+        else if(type="ratio") {
+            if(losses == 0) {
+                return 0;
+            }
+            else {
+                return ((wins/losses).toFixed(2));
+            }
+        }
+    }
+
+    function printTable(data, selection) {
+        var subcontainer = $(this);
+        $('#hint').fadeOut();
+        subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");
+        subcontainer.append("<table class='table'><tr><td></td><th scope='col'>All</th><th scope='col'>Wins</th><th scope='col'>Losses</th><th scope='col'>Ratio</th></tr><tr><th scope='row'>All</th><td>"+getStat(data,selection, 0, 4, "both")+"</td><td>"+getStat(data,selection,0,4,'win')+"</td><td>"+getStat(data,selection,0,4,'loss')+"</td><td>"+getStat(data,selection,0,4,"ratio")+"</td></tr><tr><th scope='row'>2015</th><td>"+getStat(data,selection, 0, 1, "both")+"</td><td>"+
+        getStat(data,selection,0,1,'win')+"</td><td>"+getStat(data,selection,0,1,'loss')+"</td><td>"+getStat(data,selection,0,1,"ratio")+"</td></tr><tr><th scope='row'>2014</th><td>"+getStat(data,selection, 1, 2, 'both')+"</td><td>"+
+        getStat(data,selection,1,2,'win')+"</td><td>"+getStat(data,selection,1,2,'loss')+"</td><td>"+getStat(data,selection,1,2,"ratio")+"</td></tr><tr><th scope='row'>2013</th><td>"+getStat(data,selection, 2, 3, 'both')+"</td><td>"+
+        getStat(data,selection,2,3,'win')+"</td><td>"+getStat(data,selection,2,3,'loss')+"</td><td>"+getStat(data,selection,2,3,"ratio")+"</td></tr><tr><th scope='row'>2012</th><td>"+getStat(data,selection, 3, 4, 'both')+"</td><td>"+
+        getStat(data,selection,3,4,'win')+"</td><td>"+getStat(data,selection,3,4,'loss')+"</td><td>"+getStat(data,selection,3,4,"ratio")+"</td></tr></table>");
+        subcontainer.append("<input type='button' class='seeMatches' value='See ALL Matches'>");
+    }
+
+    //Empties both subcontainers and midcontainer so it appears as a "homepage"
     function emptyEverything() {
         $('.subcontainer').empty();
         $('.midcontainer').empty();
     }
 
+    //Prints out the most played opponent given a certain filter
     function printMostPlayedOpponent(data) {
         var subcontainer = $(this);
         var answer;
@@ -105,7 +168,7 @@ $(document).ready(function() {
                 maxCount = nameMap[frequentName];
             }
         }
-        subcontainer.find('input:nth-child(4)').after("<p><strong>Most Played Opponent(s):</strong></br>"+mostFrequentName+"<br/><strong>Games:</strong> "+maxCount+"</p>");
+        subcontainer.find('input:nth-child(5)').after("<p><strong>Most Played Opponent(s):</strong></br>"+mostFrequentName+"<br/><strong>Games:</strong> "+maxCount+"</p>");
     }
 
     //This function will allow the win/loss toggle to filter the match data for each player
@@ -233,6 +296,7 @@ $(document).ready(function() {
     function printMatchData(data, selection, yearBeg, yearEnd, type) {
         var wins=0, losses=0;
         var subcontainer = $(this);
+        subcontainer.empty();
         subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");
         for(var year=yearBeg; year<yearEnd; year++){
             for(var i=1; i<data[year].length; i++) {
@@ -247,6 +311,7 @@ $(document).ready(function() {
             }
         }
         subcontainer.find('p:first-child').after("<h3>Match History ("+wins+"-"+losses+")</h3>");
+        subcontainer.find('p:first-child').after("<input type='button' value='Table Format' class='returnTable'>");
         subcontainer.find('p:first-child').after("<input type='button' value='Clear Player' class='clear'>");
         subcontainer.find('p:first-child').after("<select class='typeFilter'><option value='both' class='both'>Both wins/losses</option><option value='wins' class='wins'>wins</option><option value='losses' class='losses'>losses</option></select>");
         subcontainer.find('p:first-child').after("<select class='yearSelection'><option value='All' class='All'>All years</option><option value='2015' class='2015'>2015</option><option value='2014' class='2014'>2014</option><option value='2013' class='2013'>2013</option><option value='2012' class='2012'>2012</option></select>");
