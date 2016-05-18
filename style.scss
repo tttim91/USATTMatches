@@ -1,3 +1,4 @@
+//Sets a baseline font size at 2% of viewport width so that rem can be used for responsive design
 :root {
     font-size: 2vw;
 }
@@ -5,75 +6,6 @@
 body {
     background-color: #EDF0F5;
     position: relative;
-}
-
-p {
-    border: 0.5px solid hsla(0, 100%, 0%, .1);
-    box-shadow: 0 2px 4px rgba(0,0,0,1);
-    padding: 1em;
-    margin: 20px;
-    background-color: white;
-    max-width: 330px;
-    font-size: 0.62rem;
-}
-
-p:hover {
-  box-shadow: 3px 5px 3px rgba(0,0,0,.6);
-  border: 1px solid hsla(0, 100%, 0%, 1);
-}
-
-.button {
-    width: 25%;
-    height: 2%;
-    background-color: #F6F6F6;
-    color: #222222;
-    border-radius: 20px;
-    font-size: 0.5rem;
-}
-
-.button:hover {
-    cursor: pointer;
-}
-
-.nameBox {
-    width: 70%;
-    height: 5%;
-    margin-bottom: 10px;
-    border: 1px solid black;
-    font-size: 1rem;
-}
-
-.score {
-    font-size: 4rem;
-    color: blue;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    box-shadow: none;
-}
-
-h1, h6 {
-
-    min-width: 70%;
-    width:70%;
-    margin-left: 2em;
-    color: white;
-}
-
-h1 {
-    font-size: 1.75rem;
-    position: absolute;
-    top: 10px;
-    left: 60px;
-}
-
-h6 {
-    font-size: 0.5rem;
-    width: 100%;
-}
-
-div h5 {
-
 }
 
 header {
@@ -85,14 +17,106 @@ header {
     width: 100vw;
 }
 
+#background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 99vw;
+    height: 100vh;
+    z-index: -100;
+    opacity: .1;
+}
+
 .hamburgermenu {
     height: 75%;
     width: 5%;
     margin: 20px;
+    &:hover{
+        cursor: pointer;
+    }
 }
 
-.hamburgermenu:hover {
-    cursor: pointer;
+p {
+    border: 0.5px solid hsla(0, 100%, 0%, .1);
+    box-shadow: 0 2px 4px rgba(0,0,0,1);
+    padding: 1em;
+    margin: 20px;
+    background-color: white;
+    max-width: 330px;
+    font-size: 0.62rem;
+    &:hover {
+        box-shadow: 3px 5px 3px rgba(0,0,0,.6);
+        border: 1px solid hsla(0, 100%, 0%, 1);
+    }
+}
+
+.button {
+    width: 25%;
+    height: 2%;
+    background-color: #F6F6F6;
+    color: #222222;
+    border-radius: 20px;
+    font-size: 0.5rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.nameBox {
+    width: 70%;
+    height: 5%;
+    margin-bottom: 10px;
+    border: 1px solid black;
+    font-size: 1rem;
+    &:focus {
+        box-shadow:inset 0 0 5px 5px #888;
+    }
+}
+
+.score {
+    font-size: 4rem;
+    color: blue;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+}
+
+h5 {
+    font-size: 1rem;
+}
+
+h6 {
+    min-width: 70%;
+    margin-left: 2em;
+    color: white;
+    font-size: 0.5rem;
+    width: 100%;
+}
+
+h1 {
+    @extend h6;
+    width:70%;
+    font-size: 1.75rem;
+    position: absolute;
+    top: 10px;
+    left: 60px;
 }
 
 .search {
@@ -106,33 +130,15 @@ header {
     border: 1px solid hsla(0, 100%, 0%, .05);
     padding: 1%;
     text-align: center;
-}
-
-.midcontainer p {
-    margin-left: 17%;
-    text-align: left;
-}
-
-.midcontainer p:nth-child(2) {
-    text-align: center;
-    padding: 0.25em;
-    background-color: #EDF0F5;
-}
-
-#background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 99vw;
-    height: 100vh;
-    z-index: -100;
-    opacity: .1;
-}
-
-h4 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
+    p {
+        margin-left: 17%;
+        text-align: left;
+        &:nth-child(2) {
+            text-align: center;
+            padding: 0.25em;
+            background-color: #EDF0F5;
+        }
+    }
 }
 
 .clear, .yearSelection, .typeFilter{
@@ -162,12 +168,15 @@ h4 {
     right: 0px;
     box-shadow: -2px 1px hsla(0,0%,0%,.4);
     display: none;
-}
-
-.menu:hover {
-    box-shadow: -3px 5px 3px rgba(0,0,0,.6);
-    border-left: 1px solid hsla(0, 100%, 0%, 1);
-    border-bottom: 1px solid hsla(0, 100%, 0%, 1);
+    &:hover {
+        box-shadow: -3px 5px 3px rgba(0,0,0,.6);
+        border-left: 1px solid hsla(0, 100%, 0%, 1);
+        border-bottom: 1px solid hsla(0, 100%, 0%, 1);
+    }
+    h2 {
+        margin-top: 10%;
+        text-align: center;
+    }
 }
 
 .menuItems {
@@ -180,25 +189,6 @@ ul li {
     font-size: 1.5rem;
     color: darkblue;
     list-style-type: none;
-}
-
-.menu h2 {
-    margin-top: 10%;
-    text-align: center;
-}
-
-h2 {
-    font-size: 2rem;
-}
-
-h3 {
-    margin-top: 20%;
-    text-align: center;
-    font-size: 1rem;
-}
-
-h5 {
-    font-size: 1rem;
 }
 
 a {

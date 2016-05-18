@@ -3,12 +3,16 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>USATT HeadtoHead</title>
+        <title>USATT Match Analyzer</title>
+        <!--Bootstrap CDN-->
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+        <!--CSS stylesheet -->
         <link href="stylesheet.css" rel="stylesheet">
     </head>
     <body>
+        <!--Background Table Tennis Table-->
         <img src="backgroundTable.jpg" id="background"/>
+        <!--Popout from hamburgermenu -->
         <div class="menu">
             <h2> Menu </h2>
             <ul class="menuItems">
@@ -18,35 +22,42 @@
         </div>
         <header>
             <div>
+                <!--Logo -->
                 <img src="USATT.jpg" id="top"/>
                 <h1 class="brand">Match<br/> Analyzer</h1>
                 <h6> From 1/7/12 -- 9/26/15 (Almost all tournaments, but some not included) </h6>
             </div>
+            <!--Hamburger Menu for popout -->
             <img src="hamburgermenu" class="hamburgermenu"/>
         </header>
         <hr>
+        <!--Bootstrap container-->
         <div class="container-fluid">
             <div class="row">
                 <div class="search col-xs-3">
                     <input type="text" placeholder="Player 1 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
-                    <p id="hint">Type a USATT player's name in either box and press ENTER for the real fun stuff to show up!</p>
+                    <p id="hint">Type a USATT player's name in either box and press ENTER!</p>
+                    <!--Container for all player 1 match data -->
                     <div class="subcontainer" id="subcontainer1">
                     </div>
                 </div>
+                <!--Container for head to head match data -->
                 <div class="midcontainer col-xs-5">
                 </div>
                 <div class="search col-xs-3">
                     <input type="text" placeholder="Player 2 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
+                    <!--Container for player 2 match data -->
                     <div class="subcontainer" id="subcontainer2">
                     </div>
                 </div>
             </div>
         </div>
 
-
+        <!--Jquery CDN-->
         <script   src="https://code.jquery.com/jquery-1.12.3.min.js"   integrity="sha256-aaODHAgvwQW1bFOGXMeX+pC4PZIPsvn2h1sArYOhgXQ="   crossorigin="anonymous"></script>
+        <!--Bootstrap Javascript CDN -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
         <script src="tim.js"></script>
     </body>
