@@ -51,6 +51,12 @@ p {
   .button:hover {
     cursor: pointer; }
 
+.seeMatches {
+  width: 50%;
+  font-size: 0.5rem; }
+  .seeMatches:hover {
+    cursor: pointer; }
+
 .nameBox {
   width: 70%;
   height: 5%;
@@ -107,6 +113,10 @@ h1 {
 
 .subcontainer {
   text-align: center; }
+  .subcontainer p {
+    text-align: left; }
+    .subcontainer p:first-child {
+      text-align: center; }
 
 .midcontainer {
   border: 1px solid rgba(0, 0, 0, 0.05);
@@ -131,7 +141,7 @@ h1 {
   color: white;
   background-color: red; }
 
-.row div:nth-child(3) {
+#rightSide {
   position: absolute;
   right: 0; }
 
@@ -184,7 +194,10 @@ a {
 .table {
   border: 2px solid black;
   margin-top: 20px;
-  background-color: white; }
+  background-color: white;
+  font-size: 0.5rem;
+  width: 95%;
+  height: 70%; }
   .table tr:first-child td:first-child {
     background-color: darkgrey; }
   .table tr:hover {
@@ -194,4 +207,17 @@ a {
     text-align: center; }
 
 .returnTable {
-  margin-left: 10px; }
+  margin-left: 10px;
+  font-size: 0.5rem;
+  width: 45%; }
+  .returnTable:hover {
+    cursor: pointer; }
+
+.surroundGraph {
+  font-size: 0.4rem;
+  width: 300px; }
+
+#placeholder {
+  position: relative;
+  width: 95%;
+  height: 200px; }

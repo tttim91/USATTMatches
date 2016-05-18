@@ -79,6 +79,13 @@ $(document).ready(function() {
             emptyEverything();
         });
 
+        // window.onresize = function(event) {
+        //     var subcontainer = $(this).parents('.subcontainer');
+        //     var selectedName = subcontainer.find('p:first-child').text();
+        //     subcontainer.empty();
+        //     printTable.bind(subcontainer)(data,selectedName);
+        // }
+
     });
 
     function getStat(data, selection, yearBeg, yearEnd, type) {
@@ -123,6 +130,9 @@ $(document).ready(function() {
         getStat(data,selection,1,2,'win')+"</td><td>"+getStat(data,selection,1,2,'loss')+"</td><td>"+getStat(data,selection,1,2,"ratio")+"</td></tr><tr><th scope='row'>2013</th><td>"+getStat(data,selection, 2, 3, 'both')+"</td><td>"+
         getStat(data,selection,2,3,'win')+"</td><td>"+getStat(data,selection,2,3,'loss')+"</td><td>"+getStat(data,selection,2,3,"ratio")+"</td></tr><tr><th scope='row'>2012</th><td>"+getStat(data,selection, 3, 4, 'both')+"</td><td>"+
         getStat(data,selection,3,4,'win')+"</td><td>"+getStat(data,selection,3,4,'loss')+"</td><td>"+getStat(data,selection,3,4,"ratio")+"</td></tr></table>");
+        subcontainer.append('<div class="surroundGraph"><h5 id="title">Win/Loss Ratio</h5><div id="placeholder"></div></div>');
+        var options = {yaxis: {ticks:4, tickDecimals:0}, xaxis: {ticks:4, tickDecimals:0}, colors:["blue"], series: {points: {show:true, radius:2, fill:true}, lines:{show:true}}};
+        $.plot(subcontainer.find('#placeholder'), [[[2012,getStat(data,selection,3,4,"ratio")], [2013,getStat(data,selection,2,3,"ratio")], [2014,getStat(data,selection,1,2,"ratio")], [2015,getStat(data,selection,0,1,"ratio")]]],options);
         subcontainer.append("<input type='button' class='seeMatches' value='See ALL Matches'>");
     }
 

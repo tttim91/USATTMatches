@@ -62,6 +62,14 @@ p {
     }
 }
 
+.seeMatches {
+    width: 50%;
+    font-size: 0.5rem;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
 .nameBox {
     width: 70%;
     height: 5%;
@@ -129,6 +137,13 @@ h1 {
 
 .subcontainer {
     text-align: center;
+    p {
+        text-align: left;
+        &:first-child {
+            text-align: center;
+        }
+    }
+
 }
 
 .midcontainer {
@@ -159,7 +174,7 @@ h1 {
     background-color: red;
 }
 
-.row div:nth-child(3) {
+#rightSide {
     position: absolute;
     right: 0;
 }
@@ -223,6 +238,9 @@ a {
     border: 2px solid black;
     margin-top: 20px;
     background-color: white;
+    font-size: 0.5rem;
+    width: 95%;
+    height: 70%;
     tr:first-child {
         td:first-child {
             background-color: darkgrey;
@@ -242,4 +260,21 @@ a {
 
 .returnTable {
     margin-left: 10px;
+    font-size: 0.5rem;
+    width:45%;
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.surroundGraph {
+    font-size: 0.4rem;
+    width: 300px;
+    // height: 70%;
+}
+
+#placeholder {
+    position:relative;
+    width:95%;
+    height:200px;
 }
