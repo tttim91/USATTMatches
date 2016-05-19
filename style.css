@@ -103,6 +103,10 @@ h6, h1 {
   width: 100%;
   font-family: "Patua One"; }
 
+.menu h6, .menu h1 {
+  padding-left: 2%;
+  margin-left: 0; }
+
 h1 {
   width: 70%;
   font-size: 1.75rem;
