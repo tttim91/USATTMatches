@@ -338,6 +338,9 @@ $(document).ready(function () {
         var counter = 0;
         var nameBox = search.find('.nameBox').val().toLowerCase();
         nameBox = nameBox.trim();
+        if(nameBox == "") {
+            nameBox = null;
+        }
         var subcontainer = search.find('.subcontainer');
         var name = "name";
         var length = nameBox.length;
