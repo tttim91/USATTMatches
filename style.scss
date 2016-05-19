@@ -135,7 +135,7 @@ h1 {
     width:70%;
     font-size: 1.75rem;
     position: absolute;
-    top: 10px;
+    top: 0px;
     left: 60px;
     font-family: "Patua One";
 }
@@ -188,7 +188,7 @@ h1 {
 
 #rightSide {
     position: absolute;
-    right: 0;
+    right: 10px;
 }
 
 .menu {
@@ -202,8 +202,6 @@ h1 {
     display: none;
     &:hover {
         box-shadow: -3px 5px 3px rgba(0,0,0,.6);
-        border-left: 1px solid hsla(0, 100%, 0%, 1);
-        border-bottom: 1px solid hsla(0, 100%, 0%, 1);
     }
     h5 {
         margin-left: 5%;
