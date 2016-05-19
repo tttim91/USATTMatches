@@ -1,36 +1,40 @@
 //When all DOM elements finish loading - THEN run Javascript code
-$(document).ready(function() {
+$(document).ready(function () {
     //Get JSON Files from Heroku API Server (2012-2015) and store promise resolution
-    var year2015 = $.get("https://tim-pingpong-stats.herokuapp.com/2015", function(data) {
+    var year2015 = $.get("https://tim-pingpong-stats.herokuapp.com/2015", function (data) {
     });
-    var year2014 = $.get("https://tim-pingpong-stats.herokuapp.com/2014", function(data) {
+    var year2014 = $.get("https://tim-pingpong-stats.herokuapp.com/2014", function (data) {
     });
-    var year2013 = $.get("https://tim-pingpong-stats.herokuapp.com/2013", function(data) {
+    var year2013 = $.get("https://tim-pingpong-stats.herokuapp.com/2013", function (data) {
     });
-    var year2012 = $.get("https://tim-pingpong-stats.herokuapp.com/2012", function(data) {
+    var year2012 = $.get("https://tim-pingpong-stats.herokuapp.com/2012", function (data) {
     });
 
     //Returns all JSON data from 2012-2015 in ARRAY with each year as an index from 0-3.
-    Promise.all([year2015, year2014, year2013, year2012]).then(function(data){
+    Promise.all([year2015, year2014, year2013, year2012]).then(function (data) {
+
         //Click on submit button and names will populate below for either player
         $('.button').on("click", function () {
             printNames.bind(this)(data);
         });
+
         //Type ENTER and names will populate (same as above handler)
         $(".nameBox").keyup(function (e) {
-            if (e.keyCode == 13) {
+            if (e.keyCode === 13) {
                 printNames.bind(this)(data);
             }
         });
 
-        $(document).on('click', '.seeMatches', function() {
+        //Click "See ALL Matches" button to go to match view
+        $(document).on('click', '.seeMatches', function () {
             var subcontainer = $(this).parents('.subcontainer');
             var selectedName = subcontainer.find('p:first-child').text();
             printMatchData.bind(subcontainer)(data, selectedName, 0, 4, "both");
             printSimilarMatches.bind(subcontainer)(data);
         });
 
-        $(document).on('click', '.returnTable', function() {
+        //Click on "Table Format" button to return to table/graph view
+        $(document).on('click', '.returnTable', function () {
             var subcontainer = $(this).parents('.subcontainer');
             var selectedName = subcontainer.find('p:first-child').text();
             subcontainer.empty();
@@ -39,7 +43,7 @@ $(document).ready(function() {
         });
 
         //Click on any populated name and it will print their match history and also the head to head with other player
-        $(document).on('click', '.name', function() {
+        $(document).on('click', '.name', function () {
             var subcontainer = $(this).parents('.subcontainer');
             subcontainer.empty();
             var selectedName = $(this).text();
@@ -48,71 +52,64 @@ $(document).ready(function() {
         });
 
         //Click on clear button and clear player on both sides
-        $(document).on('click', '.clear', function() {
+        $(document).on('click', '.clear', function () {
             clearPlayer.bind(this)();
         });
 
         //Toggle year selection and data will filter
-        $(document).on('change', '.yearSelection', function() {
+        $(document).on('change', '.yearSelection', function () {
             selectYear.bind(this)(data);
         });
 
         //Toggle the win/loss selection and data will filter
-        $(document).on('change', '.typeFilter', function() {
+        $(document).on('change', '.typeFilter', function () {
             selectType.bind(this)(data);
         });
 
         //Click anywhere to close the popout menu
-        $(".container-fluid").click(function() {
-            if($('.menu').is(":visible")==true) {
+        $(".container-fluid").click(function () {
+            if ($('.menu').is(":visible") === true) {
                 $('.menu').fadeOut(300);
             }
         });
 
         //Click on hamburgermenu to open popout menu
-        $('.hamburgermenu').click(function() {
+        $('.hamburgermenu').click(function () {
             $('.menu').toggle(300);
         });
 
         //Click on USATT logo to go back to a "homepage" (just clears everything except search boxes)
-        $('#top').click(function() {
+        $('#top').click(function () {
             emptyEverything();
         });
 
-        // window.onresize = function(event) {
-        //     var subcontainer = $(this).parents('.subcontainer');
-        //     var selectedName = subcontainer.find('p:first-child').text();
-        //     subcontainer.empty();
-        //     printTable.bind(subcontainer)(data,selectedName);
-        // }
-
     });
 
+    //Returns a given stat such as wins, losses, both or ratio for a given year and player
     function getStat(data, selection, yearBeg, yearEnd, type) {
-        var wins=0, losses=0;
+        var wins = 0, losses = 0;
         var subcontainer = $(this);
-        // subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");
-        for(var year=yearBeg; year<yearEnd; year++){
-            for(var i=1; i<data[year].length; i++) {
-                if((selection == getName(year, i, data)) && (type=="both" || type=="win" || type=="ratio")) {
+        for (var year=yearBeg; year<yearEnd; year++){
+            for (var i=1; i<data[year].length; i++) {
+                if ((selection == getName(year, i, data)) && (type=="both" || type=="win" || type=="ratio")) {
                     wins++;
                 }
-                else if((selection == getNameOpponent(year, i, data)) && (type=="both" || type=="loss" || type=="ratio")) {
+                else if ((selection == getNameOpponent(year, i, data)) && (type=="both" || type=="loss" || type=="ratio")) {
                     losses++;
                 }
             }
         }
-        if(type=="both") {
+        if (type=="both") {
             return wins+losses;
         }
-        else if(type=="win") {
+        else if (type=="win") {
             return wins;
         }
-        else if(type=="loss") {
+        else if (type=="loss") {
             return losses;
         }
-        else if(type="ratio") {
-            if(losses == 0) {
+        else if (type="ratio") {
+            if (losses == 0) {
                 return 0;
             }
             else {
@@ -121,19 +118,20 @@ $(document).ready(function() {
         }
     }
 
+    //Will print out table and graph with all information on first page of player profile
     function printTable(data, selection) {
         var subcontainer = $(this);
         $('#hint').fadeOut();
-        subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");
+        subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p><br/>");
         subcontainer.append("<table class='table'><tr><td></td><th scope='col'>All</th><th scope='col'>Wins</th><th scope='col'>Losses</th><th scope='col'>Ratio</th></tr><tr><th scope='row'>All</th><td>"+getStat(data,selection, 0, 4, "both")+"</td><td>"+getStat(data,selection,0,4,'win')+"</td><td>"+getStat(data,selection,0,4,'loss')+"</td><td>"+getStat(data,selection,0,4,"ratio")+"</td></tr><tr><th scope='row'>2015</th><td>"+getStat(data,selection, 0, 1, "both")+"</td><td>"+
         getStat(data,selection,0,1,'win')+"</td><td>"+getStat(data,selection,0,1,'loss')+"</td><td>"+getStat(data,selection,0,1,"ratio")+"</td></tr><tr><th scope='row'>2014</th><td>"+getStat(data,selection, 1, 2, 'both')+"</td><td>"+
         getStat(data,selection,1,2,'win')+"</td><td>"+getStat(data,selection,1,2,'loss')+"</td><td>"+getStat(data,selection,1,2,"ratio")+"</td></tr><tr><th scope='row'>2013</th><td>"+getStat(data,selection, 2, 3, 'both')+"</td><td>"+
         getStat(data,selection,2,3,'win')+"</td><td>"+getStat(data,selection,2,3,'loss')+"</td><td>"+getStat(data,selection,2,3,"ratio")+"</td></tr><tr><th scope='row'>2012</th><td>"+getStat(data,selection, 3, 4, 'both')+"</td><td>"+
-        getStat(data,selection,3,4,'win')+"</td><td>"+getStat(data,selection,3,4,'loss')+"</td><td>"+getStat(data,selection,3,4,"ratio")+"</td></tr></table>");
+        getStat(data,selection,3,4,'win')+"</td><td>"+getStat(data,selection,3,4,'loss')+"</td><td>"+getStat(data,selection,3,4,"ratio")+"</td></tr></table><br/>");
         subcontainer.append('<div class="surroundGraph"><h5 id="title">Win/Loss Ratio</h5><div id="placeholder"></div></div>');
         var options = {yaxis: {ticks:4, tickDecimals:0}, xaxis: {ticks:4, tickDecimals:0}, colors:["blue"], series: {points: {show:true, radius:2, fill:true}, lines:{show:true}}};
         $.plot(subcontainer.find('#placeholder'), [[[2012,getStat(data,selection,3,4,"ratio")], [2013,getStat(data,selection,2,3,"ratio")], [2014,getStat(data,selection,1,2,"ratio")], [2015,getStat(data,selection,0,1,"ratio")]]],options);
-        subcontainer.append("<input type='button' class='seeMatches' value='See ALL Matches'>");
+        subcontainer.append("<br/><input type='button' class='seeMatches' value='See ALL Matches'>");
     }
 
     //Empties both subcontainers and midcontainer so it appears as a "homepage"
@@ -274,6 +272,7 @@ $(document).ready(function() {
         subcontainer.find(option).attr("selected", true);
     }
 
+    //Will clear out all match, graph, and player information for one of the players
     function clearPlayer() {
         var subcontainer = $(this).parents('.subcontainer');
         subcontainer.empty();
@@ -304,7 +303,7 @@ $(document).ready(function() {
 
     //This function prints out the player you select as well as all their matches below with details
     function printMatchData(data, selection, yearBeg, yearEnd, type) {
-        var wins=0, losses=0;
+        var wins = 0, losses = 0;
         var subcontainer = $(this);
         subcontainer.empty();
         subcontainer.append("<p style='font-size:1rem; color: darkblue;'><strong>" + selection + "</strong></p>");

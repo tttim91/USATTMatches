@@ -1,3 +1,5 @@
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
+
 //Sets a baseline font size at 2% of viewport width so that rem can be used for responsive design
 :root {
     font-size: 2vw;
@@ -12,16 +14,15 @@ header {
     display: flex;
     justify-content: space-between;
     background-color: #3B5998;
-    margin: -1em;
     height: auto;
-    width: 100vw;
+    width: 100%;
 }
 
 #background {
     position: absolute;
     top: 0;
     left: 0;
-    width: 99vw;
+    width: 100%;
     height: 100vh;
     z-index: -100;
     opacity: .1;
@@ -51,7 +52,7 @@ p {
 }
 
 .button {
-    width: 25%;
+    width: 45%;
     height: 2%;
     background-color: #F6F6F6;
     color: #222222;
@@ -63,8 +64,9 @@ p {
 }
 
 .seeMatches {
-    width: 50%;
+    width: 80%;
     font-size: 0.5rem;
+
     &:hover {
         cursor: pointer;
     }
@@ -93,22 +95,26 @@ p {
 
 h2 {
     font-size: 2rem;
+    font-family: "Patua One";
 }
 
 h3 {
     margin-top: 20%;
     text-align: center;
     font-size: 1rem;
+    font-family: "Patua One";
 }
 
 h4 {
     text-align: center;
     margin-bottom: 10px;
     font-size: 1.5rem;
+    font-family: "Patua One";
 }
 
 h5 {
     font-size: 1rem;
+    font-family: "Patua One";
 }
 
 h6 {
@@ -117,6 +123,7 @@ h6 {
     color: white;
     font-size: 0.5rem;
     width: 100%;
+    font-family: "Patua One";
 }
 
 h1 {
@@ -126,6 +133,7 @@ h1 {
     position: absolute;
     top: 10px;
     left: 60px;
+    font-family: "Patua One";
 }
 
 .search {
@@ -193,9 +201,14 @@ h1 {
         border-left: 1px solid hsla(0, 100%, 0%, 1);
         border-bottom: 1px solid hsla(0, 100%, 0%, 1);
     }
-    h2 {
-        margin-top: 10%;
+    h5 {
+        margin-left: 5%;
         text-align: center;
+        font-family: "Patua One";
+    }
+    h6 {
+        font-family: "Patua One";
+        color: black;
     }
 }
 
@@ -216,8 +229,8 @@ a {
 }
 
 #top {
-    margin-left: 20px;
-    margin-top: 20px;
+    margin-left: 5px;
+    margin-top: 10px;
     width: 30%;
     height: 65%;
     cursor: pointer;
@@ -239,8 +252,11 @@ a {
     margin-top: 2%;
     background-color: white;
     font-size: 0.5rem;
-    width: 95%;
+    width: 100%;
     height: 70%;
+    @media screen and (max-width: 320px) {
+        display: none;
+    }
     tr:first-child {
         td:first-child {
             background-color: darkgrey;
@@ -255,10 +271,7 @@ a {
     td, th {
         border: 1px solid black;
         text-align: center;
-    }
-    @media only screen and (max-width: 768px) {
-        width:10%;
-        height: 15vh;
+        width: 5%;
     }
 }
 
@@ -278,10 +291,38 @@ a {
 }
 
 #placeholder {
-    width:95%;
+    width:100%;
     height:40vh;
-    @media only screen and (max-width: 768px) {
-        width:100%;
-        height: 15vh;
+    /* Portrait and Landscape */
+    @media screen
+      and (device-width: 360px)
+      and (device-height: 640px)
+      and (-webkit-device-pixel-ratio: 3) {
+          width:100%;
+          height: 15vh;
     }
+
+    /* Portrait */
+    @media screen
+      and (device-width: 360px)
+      and (device-height: 640px)
+      and (-webkit-device-pixel-ratio: 3)
+      and (orientation: portrait) {
+          width:100%;
+          height: 15vh;
+    }
+
+    /* Landscape */
+    @media screen
+      and (device-width: 360px)
+      and (device-height: 640px)
+      and (-webkit-device-pixel-ratio: 3)
+      and (orientation: landscape) {
+          width:100%;
+          height: 15vh;
+    }
+}
+
+ol li {
+    margin-right: 2%;
 }

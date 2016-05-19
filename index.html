@@ -8,62 +8,72 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
         <!--CSS stylesheet -->
         <link href="style.css" rel="stylesheet">
+        <!--Favicon-->
         <link rel="shortcut icon" type="image/png" href="./favicon.png"/>
     </head>
     <body>
         <!--Background Table Tennis Table-->
-        <img src="backgroundTable.jpg" id="background"/>
+        <img src="backgroundTable.jpg" id="background" alt="Background Picture"/>
         <!--Popout from hamburgermenu -->
-        <div class="menu">
-            <h2> Menu </h2>
-            <ul class="menuItems">
-                <li>Player Finder</li>
-                <li>Contact</li>
-            </ul>
-        </div>
+        <aside class="menu">
+            <h5>Instructions:</h5>
+            <ol>
+                <li>Wait for data to download (takes between 20s and 2mins depending on internet speed (70mB download)).  You will know it is done when the search boxes start populating below with names</li>
+                <li>Enter a USATT player name in either box and press enter or click submit button. (Name must be any substring (starting from first letter) of first OR last name (not both) OR EXACT first AND last name with one space between)</li>
+                <li>After names populate, click on one to select and see all their match information</li>
+                <li>Enjoy the graphs and then click see ALL matches to get a fully populated list of all matches played by that player</li>
+                <li>Filter matches by year or wins/losses and see the person whom you played the most in any category as well as all matches</li>
+                <li>Enter another name in other box (should be someone that the first person has played).  After selecting the name in the list that populates, the middle section of site will show head to head matches and match score between player 1 and player 2</li>
+                <li>Share your experience with other USATT players and pass them the link</li>
+            </ol><br/>
+            <h6> Creator: Tim Musgrove<br/><br/>Contact: coloradotthard@gmail.com</h6>
+        </aside>
         <header>
-            <div>
+            <section>
                 <!--Logo -->
-                <img src="USATT.jpg" id="top"/>
+                <img src="USATT.jpg" id="top" alt="USATT Logo"/>
                 <h1 class="brand">Match<br/> Analyzer</h1>
                 <h6> From 1/7/12 -- 9/26/15 (Almost all tournaments, but some not included) </h6>
-            </div>
+            </section>
             <!--Hamburger Menu for popout -->
-            <img src="hamburgermenu" class="hamburgermenu"/>
+            <img src="hamburgermenu" class="hamburgermenu" alt="Hamburger Menu"/>
         </header>
         <hr>
         <!--Bootstrap container-->
         <div class="container-fluid">
             <div class="row">
-                <div class="search col-xs-3">
+                <section class="search col-xs-3">
                     <input type="text" placeholder="Player 1 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
                     <p id="hint">Type a USATT player's name in either box and press ENTER!</p>
                     <!--Container for all player 1 match data -->
-                    <div class="subcontainer" id="subcontainer1">
-                    </div>
-                </div>
+                    <article class="subcontainer" id="subcontainer1">
+                    </article>
+                </section>
                 <!--Container for head to head match data -->
-                <div class="midcontainer col-xs-5">
-                </div>
-                <div class="search col-xs-3" id="rightSide">
+                <section class="midcontainer col-xs-5">
+                </section>
+                <section class="search col-xs-3" id="rightSide">
                     <input type="text" placeholder="Player 2 Name" class="nameBox">
                     <input type="button" value="Submit" class="button">
                     <!--Container for player 2 match data -->
-                    <div class="subcontainer" id="subcontainer2">
-                    </div>
-                </div>
+                    <article class="subcontainer" id="subcontainer2">
+                    </article>
+                </section>
             </div>
         </div>
 
         <!--Jquery CDN-->
-        <script   src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/jquery-2.2.3.min.js"   integrity="sha256-a23g1Nt4dtEYOj7bR+vTu7+T8VP13humZFBJNIYoEJo="   crossorigin="anonymous"></script>
         <!--Bootstrap Javascript CDN -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <!--Jquery Flot plugin -->
         <script src="jquery.flot.js"></script>
+        <!--Encanvas plugin for graphing -->
         <script src="excanvas.min.js"></script>
+        <!--Jquery Flot resize plugin -->
         <script src="jquery.flot.resize.js"></script>
-        <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-        <script src="tim.js"></script>
+        <!--Custom javascript file-->
+        <script src="app.js"></script>
     </body>
 </html>

@@ -1,3 +1,4 @@
+@import url(https://fonts.googleapis.com/css?family=Patua+One);
 :root {
   font-size: 2vw; }
 
@@ -9,15 +10,14 @@ header {
   display: flex;
   justify-content: space-between;
   background-color: #3B5998;
-  margin: -1em;
   height: auto;
-  width: 100vw; }
+  width: 100%; }
 
 #background {
   position: absolute;
   top: 0;
   left: 0;
-  width: 99vw;
+  width: 100%;
   height: 100vh;
   z-index: -100;
   opacity: .1; }
@@ -42,7 +42,7 @@ p {
     border: 1px solid black; }
 
 .button {
-  width: 25%;
+  width: 45%;
   height: 2%;
   background-color: #F6F6F6;
   color: #222222;
@@ -52,7 +52,7 @@ p {
     cursor: pointer; }
 
 .seeMatches {
-  width: 50%;
+  width: 80%;
   font-size: 0.5rem; }
   .seeMatches:hover {
     cursor: pointer; }
@@ -76,34 +76,40 @@ p {
   box-shadow: none; }
 
 h2 {
-  font-size: 2rem; }
+  font-size: 2rem;
+  font-family: "Patua One"; }
 
 h3 {
   margin-top: 20%;
   text-align: center;
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-family: "Patua One"; }
 
 h4 {
   text-align: center;
   margin-bottom: 10px;
-  font-size: 1.5rem; }
+  font-size: 1.5rem;
+  font-family: "Patua One"; }
 
 h5 {
-  font-size: 1rem; }
+  font-size: 1rem;
+  font-family: "Patua One"; }
 
 h6, h1 {
   min-width: 70%;
   margin-left: 2em;
   color: white;
   font-size: 0.5rem;
-  width: 100%; }
+  width: 100%;
+  font-family: "Patua One"; }
 
 h1 {
   width: 70%;
   font-size: 1.75rem;
   position: absolute;
   top: 10px;
-  left: 60px; }
+  left: 60px;
+  font-family: "Patua One"; }
 
 .search {
   padding: 1%;
@@ -158,9 +164,13 @@ h1 {
     box-shadow: -3px 5px 3px rgba(0, 0, 0, 0.6);
     border-left: 1px solid black;
     border-bottom: 1px solid black; }
-  .menu h2 {
-    margin-top: 10%;
-    text-align: center; }
+  .menu h5 {
+    margin-left: 5%;
+    text-align: center;
+    font-family: "Patua One"; }
+  .menu h6, .menu h1 {
+    font-family: "Patua One";
+    color: black; }
 
 .menuItems {
   margin-top: 10%;
@@ -176,8 +186,8 @@ a {
   font-size: 1rem; }
 
 #top {
-  margin-left: 20px;
-  margin-top: 20px;
+  margin-left: 5px;
+  margin-top: 10px;
   width: 30%;
   height: 65%;
   cursor: pointer; }
@@ -196,19 +206,19 @@ a {
   margin-top: 2%;
   background-color: white;
   font-size: 0.5rem;
-  width: 95%;
+  width: 100%;
   height: 70%; }
+  @media screen and (max-width: 320px) {
+    .table {
+      display: none; } }
   .table tr:first-child td:first-child {
     background-color: darkgrey; }
   .table tr:hover {
     background-color: darkgrey; }
   .table td, .table th {
     border: 1px solid black;
-    text-align: center; }
-  @media only screen and (max-width: 768px) {
-    .table {
-      width: 10%;
-      height: 15vh; } }
+    text-align: center;
+    width: 5%; }
 
 .returnTable {
   margin-left: 10px;
@@ -222,9 +232,23 @@ a {
   width: 100%; }
 
 #placeholder {
-  width: 95%;
-  height: 40vh; }
-  @media only screen and (max-width: 768px) {
+  width: 100%;
+  height: 40vh;
+  /* Portrait and Landscape */
+  /* Portrait */
+  /* Landscape */ }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
     #placeholder {
       width: 100%;
       height: 15vh; } }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+    #placeholder {
+      width: 100%;
+      height: 15vh; } }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+    #placeholder {
+      width: 100%;
+      height: 15vh; } }
+
+ol li {
+  margin-right: 2%; }
