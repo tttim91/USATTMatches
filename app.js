@@ -1,14 +1,10 @@
 //When all DOM elements finish loading - THEN run Javascript code
 $(document).ready(function () {
     //Get JSON Files from Heroku API Server (2012-2015) and store promise resolution
-    var year2015 = $.get("https://tim-pingpong-stats.herokuapp.com/2015", function (data) {
-    });
-    var year2014 = $.get("https://tim-pingpong-stats.herokuapp.com/2014", function (data) {
-    });
-    var year2013 = $.get("https://tim-pingpong-stats.herokuapp.com/2013", function (data) {
-    });
-    var year2012 = $.get("https://tim-pingpong-stats.herokuapp.com/2012", function (data) {
-    });
+    var year2015 = $.get("https://tim-pingpong-stats.herokuapp.com/2015");
+    var year2014 = $.get("https://tim-pingpong-stats.herokuapp.com/2014");
+    var year2013 = $.get("https://tim-pingpong-stats.herokuapp.com/2013");
+    var year2012 = $.get("https://tim-pingpong-stats.herokuapp.com/2012");
 
     //Returns all JSON data from 2012-2015 in ARRAY with each year as an index from 0-3.
     Promise.all([year2015, year2014, year2013, year2012]).then(function (data) {
@@ -83,6 +79,8 @@ $(document).ready(function () {
             emptyEverything();
         });
 
+    }).catch(function(error) {
+        $('.midcontainer').append("<h1>"+error+"</h1>");
     });
 
     //Returns a given stat such as wins, losses, both or ratio for a given year and player
