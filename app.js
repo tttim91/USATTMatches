@@ -68,6 +68,11 @@ $(document).ready(function () {
                 $('.menu').fadeOut(300);
             }
         });
+        $("header section:first-child").click(function () {
+            if ($('.menu').is(":visible") === true) {
+                $('.menu').fadeOut(300);
+            }
+        });
 
         //Click on hamburgermenu to open popout menu
         $('.hamburgermenu').click(function () {

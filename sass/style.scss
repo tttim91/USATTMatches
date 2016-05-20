@@ -239,10 +239,12 @@ a {
 }
 
 #hint {
+    position: relative;
     background-color: $hintColor;
     color: $paragraphBackground;
     height: 50%;
     width: 82%;
+    left: 1.5%;
 }
 
 .table {

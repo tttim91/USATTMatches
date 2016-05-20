@@ -195,10 +195,12 @@ a {
   cursor: pointer; }
 
 #hint {
+  position: relative;
   background-color: darkblue;
   color: white;
   height: 50%;
-  width: 82%; }
+  width: 82%;
+  left: 1.5%; }
 
 .table {
   border: 2px solid black;
