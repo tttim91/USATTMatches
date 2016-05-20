@@ -42,6 +42,7 @@ p {
     border: 1px solid black; }
 
 .button {
+  margin-left: 27%;
   width: 45%;
   height: 2%;
   background-color: #F6F6F6;
@@ -58,6 +59,7 @@ p {
     cursor: pointer; }
 
 .nameBox {
+  margin-left: 14%;
   width: 70%;
   height: 5%;
   margin-bottom: 10px;
@@ -145,6 +147,7 @@ h1 {
   margin-left: 10px;
   margin-bottom: 10px;
   font-size: 0.5rem;
+  left: -2%;
   width: 45%; }
 
 .clear {
@@ -153,7 +156,7 @@ h1 {
 
 #rightSide {
   position: absolute;
-  right: 10px; }
+  right: 30px; }
 
 .menu {
   position: absolute;
@@ -217,9 +220,11 @@ a {
     width: 5%; }
 
 .returnTable {
+  position: relative;
   margin-left: 10px;
   font-size: 0.5rem;
-  width: 45%; }
+  width: 45%;
+  left: -2%; }
   .returnTable:hover {
     cursor: pointer; }
 

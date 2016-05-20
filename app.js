@@ -374,7 +374,7 @@ $(document).ready(function () {
 
                 if(playerName) {
                     if(counter==1) {
-                        subcontainer.append("<h4>Select a person</h4>");
+                        subcontainer.append("<br/><br/><h4>Select a person</h4>");
                         subcontainer.append("<p class="+name+">" + playerName + "</p>");
                         currentArray.push(playerName);
                     }
