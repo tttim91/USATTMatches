@@ -13,6 +13,45 @@ header {
   height: auto;
   width: 100%; }
 
+.hamburgermenu {
+  height: 75%;
+  width: 5%;
+  margin: 20px; }
+  .hamburgermenu:hover {
+    cursor: pointer; }
+
+.menu {
+  position: absolute;
+  background-color: lightgrey;
+  z-index: 10;
+  width: 25%;
+  height: 100vh;
+  right: 0px;
+  box-shadow: -2px 1px rgba(0, 0, 0, 0.4);
+  display: none; }
+  .menu:hover {
+    box-shadow: -3px 5px 3px rgba(0, 0, 0, 0.6); }
+  .menu h5 {
+    margin-left: 5%;
+    text-align: center;
+    font-family: "Patua One"; }
+  .menu h6, .menu h1 {
+    font-family: "Patua One";
+    color: black;
+    padding-left: 2%;
+    margin-left: 0; }
+
+.menuItems {
+  margin-top: 10%;
+  z-index: 10; }
+
+#top {
+  margin-left: 5px;
+  margin-top: 10px;
+  width: 30%;
+  height: 65%;
+  cursor: pointer; }
+
 #background {
   position: absolute;
   top: 0;
@@ -21,13 +60,6 @@ header {
   height: 100vh;
   z-index: -100;
   opacity: .1; }
-
-.hamburgermenu {
-  height: 75%;
-  width: 5%;
-  margin: 20px; }
-  .hamburgermenu:hover {
-    cursor: pointer; }
 
 p {
   border: 0.5px solid rgba(0, 0, 0, 0.1);
@@ -41,23 +73,6 @@ p {
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.6);
     border: 1px solid black; }
 
-.button {
-  margin-left: 27%;
-  width: 45%;
-  height: 2%;
-  background-color: #F6F6F6;
-  color: #222222;
-  border-radius: 20px;
-  font-size: 0.5rem; }
-  .button:hover {
-    cursor: pointer; }
-
-.seeMatches {
-  width: 80%;
-  font-size: 0.5rem; }
-  .seeMatches:hover {
-    cursor: pointer; }
-
 .nameBox {
   margin-left: 14%;
   width: 70%;
@@ -69,13 +84,45 @@ p {
     box-shadow: inset 0 0 1px 1px rgba(10, 112, 255, 0.85);
     border: 2px solid blue; }
 
-.score {
-  font-size: 4rem;
-  color: #3B5998;
-  font-weight: bold;
-  text-align: center;
-  border: none;
-  box-shadow: none; }
+.button {
+  margin-left: 27%;
+  width: 45%;
+  height: 2%;
+  background-color: #F6F6F6;
+  color: #222222;
+  border-radius: 20px;
+  font-size: 0.5rem; }
+  .button:hover {
+    cursor: pointer; }
+
+.search {
+  padding: 1%;
+  margin: 1%;
+  margin-left: 3%;
+  border: 1px solid rgba(0, 0, 0, 0.05); }
+
+.subcontainer {
+  text-align: center; }
+  .subcontainer p {
+    text-align: left; }
+    .subcontainer p:first-child {
+      text-align: center; }
+
+.midcontainer {
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1%;
+  text-align: center; }
+  .midcontainer p {
+    margin-left: 17%;
+    text-align: left; }
+    .midcontainer p:nth-child(2) {
+      text-align: center;
+      padding: 0.05em;
+      background-color: #EDF0F5; }
+
+#rightSide {
+  position: absolute;
+  right: 30px; }
 
 h2 {
   font-size: 2rem;
@@ -105,10 +152,6 @@ h6, h1 {
   width: 100%;
   font-family: "Patua One"; }
 
-.menu h6, .menu h1 {
-  padding-left: 2%;
-  margin-left: 0; }
-
 h1 {
   width: 70%;
   font-size: 1.75rem;
@@ -117,30 +160,19 @@ h1 {
   left: 60px;
   font-family: "Patua One"; }
 
-.search {
-  padding: 1%;
-  margin: 1%;
-  margin-left: 3%;
-  border: 1px solid rgba(0, 0, 0, 0.05); }
+.seeMatches {
+  width: 80%;
+  font-size: 0.5rem; }
+  .seeMatches:hover {
+    cursor: pointer; }
 
-.subcontainer {
-  text-align: center; }
-  .subcontainer p {
-    text-align: left; }
-    .subcontainer p:first-child {
-      text-align: center; }
-
-.midcontainer {
-  border: 1px solid rgba(0, 0, 0, 0.05);
-  padding: 1%;
-  text-align: center; }
-  .midcontainer p {
-    margin-left: 17%;
-    text-align: left; }
-    .midcontainer p:nth-child(2) {
-      text-align: center;
-      padding: 0.05em;
-      background-color: #EDF0F5; }
+.score {
+  font-size: 4rem;
+  color: #3B5998;
+  font-weight: bold;
+  text-align: center;
+  border: none;
+  box-shadow: none; }
 
 .clear, .yearSelection, .typeFilter {
   position: relative;
@@ -153,43 +185,6 @@ h1 {
 .clear {
   color: white;
   background-color: red; }
-
-#rightSide {
-  position: absolute;
-  right: 30px; }
-
-.menu {
-  position: absolute;
-  background-color: lightgrey;
-  z-index: 10;
-  width: 25%;
-  height: 100vh;
-  right: 0px;
-  box-shadow: -2px 1px rgba(0, 0, 0, 0.4);
-  display: none; }
-  .menu:hover {
-    box-shadow: -3px 5px 3px rgba(0, 0, 0, 0.6); }
-  .menu h5 {
-    margin-left: 5%;
-    text-align: center;
-    font-family: "Patua One"; }
-  .menu h6, .menu h1 {
-    font-family: "Patua One";
-    color: black; }
-
-.menuItems {
-  margin-top: 10%;
-  z-index: 10; }
-
-a {
-  font-size: 1rem; }
-
-#top {
-  margin-left: 5px;
-  margin-top: 10px;
-  width: 30%;
-  height: 65%;
-  cursor: pointer; }
 
 .name {
   cursor: pointer; }
@@ -255,3 +250,6 @@ a {
 
 ol li {
   margin-right: 2%; }
+
+a {
+  font-size: 1rem; }

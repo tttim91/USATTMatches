@@ -18,6 +18,53 @@ header {
     width: 100%;
 }
 
+.hamburgermenu {
+    height: 75%;
+    width: 5%;
+    margin: 20px;
+    &:hover{
+        cursor: pointer;
+    }
+}
+
+.menu {
+    position: absolute;
+    background-color: $menuColor;
+    z-index: 10;
+    width: 25%;
+    height: 100vh;
+    right: 0px;
+    box-shadow: -2px 1px hsla(0,0%,0%,.4);
+    display: none;
+    &:hover {
+        box-shadow: -3px 5px 3px rgba(0,0,0,.6);
+    }
+    h5 {
+        margin-left: 5%;
+        text-align: center;
+        font-family: "Patua One";
+    }
+    h6 {
+        font-family: "Patua One";
+        color: black;
+        padding-left: 2%;
+        margin-left: 0;
+    }
+}
+
+.menuItems {
+    margin-top: 10%;
+    z-index: 10;
+}
+
+#top {
+    margin-left: 5px;
+    margin-top: 10px;
+    width: 30%;
+    height: 65%;
+    cursor: pointer;
+}
+
 #background {
     position: absolute;
     top: 0;
@@ -26,15 +73,6 @@ header {
     height: 100vh;
     z-index: -100;
     opacity: .1;
-}
-
-.hamburgermenu {
-    height: 75%;
-    width: 5%;
-    margin: 20px;
-    &:hover{
-        cursor: pointer;
-    }
 }
 
 p {
@@ -51,28 +89,6 @@ p {
     }
 }
 
-.button {
-    margin-left: 27%;
-    width: 45%;
-    height: 2%;
-    background-color: $buttonColor;
-    color: $buttonFontColor;
-    border-radius: 20px;
-    font-size: 0.5rem;
-    &:hover {
-        cursor: pointer;
-    }
-}
-
-.seeMatches {
-    width: 80%;
-    font-size: 0.5rem;
-
-    &:hover {
-        cursor: pointer;
-    }
-}
-
 .nameBox {
     margin-left: 14%;
     width: 70%;
@@ -86,60 +102,17 @@ p {
     }
 }
 
-.score {
-    font-size: 4rem;
-    color: $headerColor;
-    font-weight: bold;
-    text-align: center;
-    border: none;
-    box-shadow: none;
-}
-
-h2 {
-    font-size: 2rem;
-    font-family: "Patua One";
-}
-
-h3 {
-    margin-top: 20%;
-    text-align: center;
-    font-size: 1rem;
-    font-family: "Patua One";
-}
-
-h4 {
-    text-align: center;
-    margin-bottom: 10px;
-    font-size: 1.5rem;
-    font-family: "Patua One";
-}
-
-h5 {
-    font-size: 1rem;
-    font-family: "Patua One";
-}
-
-h6 {
-    min-width: 70%;
-    margin-left: 2em;
-    color: $paragraphBackground;
+.button {
+    margin-left: 27%;
+    width: 45%;
+    height: 2%;
+    background-color: $buttonColor;
+    color: $buttonFontColor;
+    border-radius: 20px;
     font-size: 0.5rem;
-    width: 100%;
-    font-family: "Patua One";
-}
-
-.menu h6 {
-    padding-left: 2%;
-    margin-left: 0;
-}
-h1 {
-    @extend h6;
-    width:70%;
-    font-size: 1.75rem;
-    position: absolute;
-    top: 0px;
-    left: 60px;
-    font-family: "Patua One";
+    &:hover {
+        cursor: pointer;
+    }
 }
 
 .search {
@@ -175,6 +148,72 @@ h1 {
     }
 }
 
+#rightSide {
+    position: absolute;
+    right: 30px;
+}
+
+h2 {
+    font-size: 2rem;
+    font-family: "Patua One";
+}
+
+h3 {
+    margin-top: 20%;
+    text-align: center;
+    font-size: 1rem;
+    font-family: "Patua One";
+}
+
+h4 {
+    text-align: center;
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-family: "Patua One";
+}
+
+h5 {
+    font-size: 1rem;
+    font-family: "Patua One";
+}
+
+h6 {
+    min-width: 70%;
+    margin-left: 2em;
+    color: $paragraphBackground;
+    font-size: 0.5rem;
+    width: 100%;
+    font-family: "Patua One";
+}
+
+h1 {
+    @extend h6;
+    width:70%;
+    font-size: 1.75rem;
+    position: absolute;
+    top: 0px;
+    left: 60px;
+    font-family: "Patua One";
+}
+
+.seeMatches {
+    width: 80%;
+    font-size: 0.5rem;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.score {
+    font-size: 4rem;
+    color: $headerColor;
+    font-weight: bold;
+    text-align: center;
+    border: none;
+    box-shadow: none;
+}
+
 .clear, .yearSelection, .typeFilter{
     position: relative;
     margin-left: 10px;
@@ -187,51 +226,6 @@ h1 {
 .clear {
     color: $paragraphBackground;
     background-color: $clearButton;
-}
-
-#rightSide {
-    position: absolute;
-    right: 30px;
-}
-
-.menu {
-    position: absolute;
-    background-color: $menuColor;
-    z-index: 10;
-    width: 25%;
-    height: 100vh;
-    right: 0px;
-    box-shadow: -2px 1px hsla(0,0%,0%,.4);
-    display: none;
-    &:hover {
-        box-shadow: -3px 5px 3px rgba(0,0,0,.6);
-    }
-    h5 {
-        margin-left: 5%;
-        text-align: center;
-        font-family: "Patua One";
-    }
-    h6 {
-        font-family: "Patua One";
-        color: black;
-    }
-}
-
-.menuItems {
-    margin-top: 10%;
-    z-index: 10;
-}
-
-a {
-    font-size: 1rem;
-}
-
-#top {
-    margin-left: 5px;
-    margin-top: 10px;
-    width: 30%;
-    height: 65%;
-    cursor: pointer;
 }
 
 .name {
@@ -327,4 +321,8 @@ a {
 
 ol li {
     margin-right: 2%;
+}
+
+a {
+    font-size: 1rem;
 }
