@@ -2,9 +2,8 @@
 function getStat(data, selection, yearBeg, yearEnd, type) {
     var wins = 0, losses = 0;
     var subcontainer = $(this);
-    var length = data[year].length;
     for (var year=yearBeg; year<yearEnd; year++){
-        for (var i=1; i<length; i++) {
+        for (var i=1; i<data[year].length; i++) {
             if ((selection == getName(year, i, data)) && (type=="both" || type=="win" || type=="ratio")) {
                 wins++;
             }
@@ -270,9 +269,8 @@ function printNames(data) {
     var name = "name";
     var length = nameBox.length;
     subcontainer.empty();
-    var loopLength = data[year].length;
     for(var year=0; year<4; year++){
-        for(var i=1; i<loopLength; i++) {
+        for(var i=1; i<data[year].length; i++) {
             var playerName = null;
             if(nameBox == data[year][i]["FirstName"].substr(0,length).toLowerCase()) {
                 counter++;
