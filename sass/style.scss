@@ -1,5 +1,6 @@
 @import "fonts.scss";
 @import "colors.scss";
+
 //Sets a baseline font size at 2% of viewport width so that rem can be used for responsive design
 :root {
     font-size: 2vw;
