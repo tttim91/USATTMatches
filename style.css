@@ -13,38 +13,6 @@ header {
   height: auto;
   width: 100%; }
 
-.hamburgermenu {
-  height: 75%;
-  width: 5%;
-  margin: 20px; }
-  .hamburgermenu:hover {
-    cursor: pointer; }
-
-.menu {
-  position: absolute;
-  background-color: lightgrey;
-  z-index: 10;
-  width: 25%;
-  height: 100vh;
-  right: 0px;
-  box-shadow: -2px 1px rgba(0, 0, 0, 0.4);
-  display: none; }
-  .menu:hover {
-    box-shadow: -3px 5px 3px rgba(0, 0, 0, 0.6); }
-  .menu h5 {
-    margin-left: 5%;
-    text-align: center;
-    font-family: "Patua One"; }
-  .menu h6, .menu h1 {
-    font-family: "Patua One";
-    color: black;
-    padding-left: 2%;
-    margin-left: 0; }
-
-.menuItems {
-  margin-top: 10%;
-  z-index: 10; }
-
 #top {
   margin-left: 5px;
   margin-top: 10px;
@@ -72,6 +40,113 @@ p {
   p:hover {
     box-shadow: 3px 5px 3px rgba(0, 0, 0, 0.6);
     border: 1px solid black; }
+
+#rightSide {
+  position: absolute;
+  right: 30px; }
+
+h2 {
+  font-size: 2rem;
+  font-family: "Patua One"; }
+
+h3 {
+  margin-top: 20%;
+  text-align: center;
+  font-size: 1rem;
+  font-family: "Patua One"; }
+
+h4 {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+  font-family: "Patua One"; }
+
+h5 {
+  font-size: 1rem;
+  font-family: "Patua One"; }
+
+h6, h1 {
+  min-width: 70%;
+  margin-left: 2em;
+  color: white;
+  font-size: 0.5rem;
+  width: 100%;
+  font-family: "Patua One"; }
+
+h1 {
+  width: 70%;
+  font-size: 1.75rem;
+  position: absolute;
+  top: 0px;
+  left: 60px;
+  font-family: "Patua One"; }
+
+#hint {
+  position: relative;
+  background-color: darkblue;
+  color: white;
+  height: 50%;
+  width: 82%;
+  left: 1.5%; }
+
+#placeholder {
+  width: 100%;
+  height: 40vh;
+  /* Portrait and Landscape */
+  /* Portrait */
+  /* Landscape */ }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
+    #placeholder {
+      width: 100%;
+      height: 15vh; } }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
+    #placeholder {
+      width: 100%;
+      height: 15vh; } }
+  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
+    #placeholder {
+      width: 100%;
+      height: 15vh; } }
+
+ol li {
+  margin-right: 2%;
+  font-size: 0.7rem; }
+
+a {
+  font-size: 1rem; }
+
+.hamburgermenu {
+  height: 75%;
+  width: 5%;
+  margin: 20px; }
+  .hamburgermenu:hover {
+    cursor: pointer; }
+
+.menu {
+  position: absolute;
+  background-color: lightgrey;
+  z-index: 10;
+  width: 25%;
+  height: 100vh;
+  overflow: auto;
+  right: 0px;
+  box-shadow: -2px 1px rgba(0, 0, 0, 0.4);
+  display: none; }
+  .menu:hover {
+    box-shadow: -3px 5px 3px rgba(0, 0, 0, 0.6); }
+  .menu h5 {
+    margin-left: 5%;
+    text-align: center;
+    font-family: "Patua One"; }
+  .menu h6, .menu h1 {
+    font-family: "Patua One";
+    color: black;
+    padding-left: 2%;
+    margin-left: 0; }
+
+.menuItems {
+  margin-top: 10%;
+  z-index: 10; }
 
 .nameBox {
   margin-left: 14%;
@@ -120,46 +195,6 @@ p {
       padding: 0.05em;
       background-color: #EDF0F5; }
 
-#rightSide {
-  position: absolute;
-  right: 30px; }
-
-h2 {
-  font-size: 2rem;
-  font-family: "Patua One"; }
-
-h3 {
-  margin-top: 20%;
-  text-align: center;
-  font-size: 1rem;
-  font-family: "Patua One"; }
-
-h4 {
-  text-align: center;
-  margin-bottom: 10px;
-  font-size: 1.5rem;
-  font-family: "Patua One"; }
-
-h5 {
-  font-size: 1rem;
-  font-family: "Patua One"; }
-
-h6, h1 {
-  min-width: 70%;
-  margin-left: 2em;
-  color: white;
-  font-size: 0.5rem;
-  width: 100%;
-  font-family: "Patua One"; }
-
-h1 {
-  width: 70%;
-  font-size: 1.75rem;
-  position: absolute;
-  top: 0px;
-  left: 60px;
-  font-family: "Patua One"; }
-
 .seeMatches {
   width: 80%;
   font-size: 0.5rem; }
@@ -188,14 +223,6 @@ h1 {
 
 .name {
   cursor: pointer; }
-
-#hint {
-  position: relative;
-  background-color: darkblue;
-  color: white;
-  height: 50%;
-  width: 82%;
-  left: 1.5%; }
 
 .table {
   border: 2px solid black;
@@ -228,28 +255,3 @@ h1 {
 .surroundGraph {
   font-size: 0.4rem;
   width: 100%; }
-
-#placeholder {
-  width: 100%;
-  height: 40vh;
-  /* Portrait and Landscape */
-  /* Portrait */
-  /* Landscape */ }
-  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) {
-    #placeholder {
-      width: 100%;
-      height: 15vh; } }
-  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: portrait) {
-    #placeholder {
-      width: 100%;
-      height: 15vh; } }
-  @media screen and (device-width: 360px) and (device-height: 640px) and (-webkit-device-pixel-ratio: 3) and (orientation: landscape) {
-    #placeholder {
-      width: 100%;
-      height: 15vh; } }
-
-ol li {
-  margin-right: 2%; }
-
-a {
-  font-size: 1rem; }

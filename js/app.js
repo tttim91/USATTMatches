@@ -6,6 +6,15 @@ $(document).ready(function () {
     var year2013 = $.get("https://tim-pingpong-stats.herokuapp.com/2013");
     var year2012 = $.get("https://tim-pingpong-stats.herokuapp.com/2012");
 
+    //Click anywhere to close the popout menu
+    $(".container-fluid").click(menuFadeOut);
+    $("header section:first-child").click(menuFadeOut);
+
+    //Click on hamburgermenu to open popout menu
+    $('.hamburgermenu').click(function () {
+        $('.menu').toggle(300);
+    });
+
     //Returns all JSON data from 2012-2015 in ARRAY with each year as an index from 0-3.
     Promise.all([year2015, year2014, year2013, year2012]).then(function (data) {
 
@@ -62,23 +71,6 @@ $(document).ready(function () {
             selectType.bind(this)(data);
         });
 
-        //Click anywhere to close the popout menu
-        $(".container-fluid").click(function () {
-            if ($('.menu').is(":visible") === true) {
-                $('.menu').fadeOut(300);
-            }
-        });
-        $("header section:first-child").click(function () {
-            if ($('.menu').is(":visible") === true) {
-                $('.menu').fadeOut(300);
-            }
-        });
-
-        //Click on hamburgermenu to open popout menu
-        $('.hamburgermenu').click(function () {
-            $('.menu').toggle(300);
-        });
-
         //Click on USATT logo to go back to a "homepage" (just clears everything except search boxes)
         $('#top').click(function () {
             emptyEverything();
@@ -86,7 +78,6 @@ $(document).ready(function () {
 
     }).catch(function(error) {
         $('.midcontainer').append("<h1>"+error+"</h1>");
-
     });
 
-})
+});
