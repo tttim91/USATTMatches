@@ -67,7 +67,7 @@ h5 {
 
 h6, h1 {
   min-width: 70%;
-  margin-left: 2em;
+  margin-left: 7%;
   color: white;
   font-size: 0.5rem;
   width: 100%;
@@ -189,6 +189,7 @@ a {
   text-align: center; }
   .midcontainer p {
     margin-left: 17%;
+    margin-right: 17%;
     text-align: left; }
     .midcontainer p:nth-child(2) {
       text-align: center;
