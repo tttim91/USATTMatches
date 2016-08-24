@@ -101,11 +101,11 @@ function printMatchData(data, selection, yearBeg, yearEnd, type) {
     for(var year=yearBeg; year<yearEnd; year++){
         for(var i=1; i<data[year].length; i++) {
             if(selection == getName(year, i, data) && (type=="both" || type=="win")) {
-                subcontainer.append("<p>" + getGameStats(year, i, data) + "</p>");
+                subcontainer.append("<p class='matchCard'>"+getGameStats(year, i, data)+"</p>");
                 wins++;
             }
             else if(selection == getNameOpponent(year, i, data) && (type=="both" || type=="loss")) {
-                subcontainer.append("<p>" + getGameStatsOpponent(year, i, data) + "</p>");
+                subcontainer.append("<p class='matchCard'>"+getGameStatsOpponent(year, i, data)+"</p>");
                 losses++;
             }
         }

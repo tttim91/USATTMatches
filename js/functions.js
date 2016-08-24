@@ -43,8 +43,8 @@ function emptyEverything() {
     $('.midcontainer').empty();
 }
 
-//This function will allow the win/loss toggle to filter the match data for each player
-function selectType(data) {
+//This function will allow the win/loss and year toggles to filter the match data for each player
+function filterMatches(data) {
     var subcontainer = $(this).parents('.subcontainer');
     subcontainer.find('.typeFilter option:selected').attr("selected", true);
     subcontainer.find('.yearSelection option:selected').attr("selected", true);
@@ -92,50 +92,6 @@ function selectType(data) {
     subcontainer.find(option).attr("selected", true);
 }
 
-//This function will allow the year selection to filter the match data for each player
-function selectYear(data) {
-    var subcontainer = $(this).parents('.subcontainer');
-    subcontainer.find('.typeFilter option:selected').attr("selected", true);
-    $(this).find('option:selected').attr("selected", true);
-    var selectedName = subcontainer.find('p:nth-child(1)').text();
-    var selectedOption = $(this).find('option:selected').val();
-    var selectedType = subcontainer.find('.typeFilter option:selected').val();
-    if(selectedType == "both") {
-        var type = "both";
-        var option = ".typeFilter option:nth-child(1)";
-    }
-    else if(selectedType == "wins") {
-        var type = "win";
-        var option = ".typeFilter option:nth-child(2)";
-    }
-    if(selectedType == "losses") {
-        var type = "loss";
-        var option = ".typeFilter option:nth-child(3)";
-    }
-    subcontainer.empty();
-    if(selectedOption == "All") {
-        printMatchData.bind(subcontainer)(data, selectedName, 0, 4, type);
-        subcontainer.find('.All').attr("selected", true);
-    }
-    else if(selectedOption == 2015) {
-        printMatchData.bind(subcontainer)(data, selectedName, 0, 1, type);
-        subcontainer.find('.2015').attr("selected", true);
-    }
-    else if(selectedOption == 2014) {
-        printMatchData.bind(subcontainer)(data, selectedName, 1, 2, type);
-        subcontainer.find('.2014').attr("selected", true);
-    }
-    else if(selectedOption == 2013) {
-        printMatchData.bind(subcontainer)(data, selectedName, 2, 3, type);
-        subcontainer.find('.2013').attr("selected", true);
-    }
-    else if(selectedOption == 2012) {
-        printMatchData.bind(subcontainer)(data, selectedName, 3, 4, type);
-        subcontainer.find('.2012').attr("selected", true);
-    }
-    subcontainer.find(option).attr("selected", true);
-}
-
 //Will clear out all match, graph, and player information for one of the players
 function clearPlayer() {
     var subcontainer = $(this).parents('.subcontainer');
@@ -154,14 +110,14 @@ function getNameOpponent(year, index, JSONdata) {
 
 //This function returns a string with the Opponent Players Match Statistics for a certain match.
 function getGameStatsOpponent(year, index, JSONdata) {
-    return "<strong>Opponent: </strong>" + JSONdata[year][index]["FirstName"] + " "+ JSONdata[year][index]["LastName"] + " (" + JSONdata[year][index]["USATT #"] + ")<br/><strong>Date:</strong> " + JSONdata[year][index]["Date"] + "<br/><strong>Game Scores: (L)</strong> " + JSONdata[year][index]["Match Score"]
-    + "<br/><strong>Tournament: </strong>" + JSONdata[year][index]["Tournament Name"] + " (" + JSONdata[year][index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[year][index]["Event"];
+    return "<span class='opponent'>v. " + JSONdata[year][index]["FirstName"] + " "+ JSONdata[year][index]["LastName"] + " (" + JSONdata[year][index]["USATT #"] + ")</span><span class='date'>" + JSONdata[year][index]["Date"] + "</span><span class='gameScores'>(L) " + JSONdata[year][index]["Match Score"]
+    + "</span><span class='tournamentName'>Tournament: </strong>" + JSONdata[year][index]["Tournament Name"] + " (" + JSONdata[year][index]['Tournament ID'] + ")</span><span class='eventName'>Event: </strong>" + JSONdata[year][index]["Event"]+"</span>";
 }
 
 //This function returns a string with the First Players Match Statistics for a certain match.
 function getGameStats(year, index, JSONdata) {
-    return "<strong>Opponent: </strong>" + JSONdata[year][index]["Opponent First Name"] + " "+ JSONdata[year][index]["Opponent Last Name"] + " (" + JSONdata[year][index]["USATT #"] + ")<br/><strong>Date:</strong> " + JSONdata[year][index]["Date"] + "<br/><strong>Game Scores: (W)</strong> " + JSONdata[year][index]["Match Score"]
-    + "<br/><strong>Tournament: </strong>" + JSONdata[year][index]["Tournament Name"] + " (" + JSONdata[year][index]['Tournament ID'] + ")<br/><strong>Event: </strong>" + JSONdata[year][index]["Event"];
+    return "<span class='opponent'>v. " + JSONdata[year][index]["Opponent First Name"] + " "+ JSONdata[year][index]["Opponent Last Name"] + " (" + JSONdata[year][index]["USATT #"] + ")</span><span class='date'>" + JSONdata[year][index]["Date"] + "</span><span class='gameScores'>(W) " + JSONdata[year][index]["Match Score"]
+    + "</span><span class='tournamentName'>Tournament: </strong>" + JSONdata[year][index]["Tournament Name"] + " (" + JSONdata[year][index]['Tournament ID'] + ")</span><span class='eventName'>Event: </strong>" + JSONdata[year][index]["Event"]+"</span>";
 }
 
 //This function returns a string that shows the head to head data format.

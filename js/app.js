@@ -10,10 +10,12 @@ $(document).ready(function () {
     $(".container-fluid").click(menuFadeOut);
     $("header section:first-child").click(menuFadeOut);
 
-    //Click on hamburgermenu to open popout menu
-    $('.hamburgermenu').click(function () {
+    var menuToggle =function() {
         $('.menu').toggle(300);
-    });
+    }
+
+    //Click on hamburgermenu to open popout menu
+    $('.hamburgermenu').click(menuToggle);
 
     //Returns all JSON data from 2012-2015 in ARRAY with each year as an index from 0-3.
     Promise.all([year2015, year2014, year2013, year2012]).then(function (data) {
@@ -63,12 +65,12 @@ $(document).ready(function () {
 
         //Toggle year selection and data will filter
         $(document).on('change', '.yearSelection', function () {
-            selectYear.bind(this)(data);
+            filterMatches.bind(this)(data);
         });
 
         //Toggle the win/loss selection and data will filter
         $(document).on('change', '.typeFilter', function () {
-            selectType.bind(this)(data);
+            filterMatches.bind(this)(data);
         });
 
         //Click on USATT logo to go back to a "homepage" (just clears everything except search boxes)
